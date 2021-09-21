@@ -1,0 +1,16 @@
+.color::after {
+    color: none; 
+
+}
+
+.color::before {
+    color: black;
+}
+
+.navbar-link .navbar-nav .navbar-light{
+    color: black; 
+}
+
+Nav.Link {
+    color:black; 
+}

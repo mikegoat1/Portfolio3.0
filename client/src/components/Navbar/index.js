@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./style.css"
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
@@ -26,17 +27,12 @@ const styles = {
         fontSize: "18px",
         lineHeight: "26px",
         margin: "0 5px",
-        justifyContent: "end"
+        justifyContent: "end",
+        color:"black"
 
     }
 
 };
-
-
-
-
-
-
 function NavBar() {
 
 
@@ -56,12 +52,12 @@ function NavBar() {
                     </Col>
                     {/* Items  */}
                     <Col md={6} className="text-right" >
-                        <Nav style={styles.item} className="" >
-                            <Nav.Link >About-Me</Nav.Link>
-                            <Nav.Link > Work </Nav.Link>
-                            <Nav.Link> Contact-Me </Nav.Link>
-                            <Nav.Link> Resume </Nav.Link>
-                            <Nav.Link  >Icon</Nav.Link>
+                        <Nav style={styles.item} className="decoration-decoration-none color" >
+                            <Nav.Link style={{color:"black"}} href="#about-me" >About-Me</Nav.Link>
+                            <Nav.Link style={{color:"black"}} href="#work" > Work </Nav.Link>
+                            <Nav.Link style={{color: "black"}} > Contact-Me </Nav.Link>
+                            <Nav.Link style={{color: "black"}}  > Resume </Nav.Link>
+                            <Nav.Link style={{color: "black"}} >Icon</Nav.Link>
                         </Nav>
                     </Col>
 
