@@ -19,11 +19,14 @@ const styles = {
         fontFamily: "Rozha One",
     },
     name: {
-        justifyContent: "start"
+        justifyContent: "start",
+        fontSize: "26px", 
     },
     item: {
         fontSize: "18px",
         lineHeight: "26px",
+        margin: "0 5px",
+        justifyContent: "end"
 
     }
 
@@ -48,19 +51,20 @@ function NavBar() {
 
                 <Row className="d-flex flex-grow-1 " >
                     {/* Name  */}
-                    <Col style={styles.name} >
-                        <Navbar.Brand className="text-left"> Michael L. Johnson</Navbar.Brand>
+                    <Col md={6} >
+                        <Navbar.Brand style={styles.name} className="text-left"> Michael L. Johnson</Navbar.Brand>
                     </Col>
-
-                    <Col style={styles.item} className="text-right" >
-                        <Nav>
+                    {/* Items  */}
+                    <Col md={6} className="text-right" >
+                        <Nav style={styles.item} className="" >
                             <Nav.Link >About-Me</Nav.Link>
+                            <Nav.Link > Work </Nav.Link>
+                            <Nav.Link> Contact-Me </Nav.Link>
+                            <Nav.Link> Resume </Nav.Link>
+                            <Nav.Link  >Icon</Nav.Link>
                         </Nav>
                     </Col>
 
-                    <Col style={styles.item} className="text-right" >
-                        save Btn
-                    </Col>
                 </Row>
             </Container>
         </Navbar>
