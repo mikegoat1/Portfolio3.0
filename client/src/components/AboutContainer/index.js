@@ -7,8 +7,8 @@ const styles = {
         height:"301px",
         opacity: 0.8,
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-        marginTop: "75px", 
-        marginLeft: "10px", 
+        marginTop: "60px", 
+        marginLeft: "3px", 
         color: "black"
     }, 
     descriptionMargin:{
