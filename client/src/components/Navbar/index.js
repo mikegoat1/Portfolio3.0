@@ -6,7 +6,8 @@ import { Col } from "react-bootstrap";
 
 import { Navbar } from "react-bootstrap";
 import { Nav } from "react-bootstrap"; 
-
+import { AiOutlineDownload } from "react-icons/ai";
+import Resume from "../../UCLA Resume 8-22-21 PDF.pdf" ; 
 
 
 const styles = {
@@ -56,8 +57,8 @@ function NavBar() {
                             <Nav.Link style={{color:"black"}} href="#about-me" >About-Me</Nav.Link>
                             <Nav.Link style={{color:"black"}} href="#work" > Work </Nav.Link>
                             <Nav.Link style={{color: "black"}} > Contact-Me </Nav.Link>
-                            <Nav.Link style={{color: "black"}}  > Resume </Nav.Link>
-                            <Nav.Link style={{color: "black"}} >Icon</Nav.Link>
+                            <Nav.Link style={{color: "black"}} href={Resume} > Resume </Nav.Link>
+                            <Nav.Link style={{color: "black"}} href={Resume} download={Resume} > <AiOutlineDownload/> </Nav.Link>
                         </Nav>
                     </Col>
 
