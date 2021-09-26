@@ -14,3 +14,14 @@
 Nav.Link {
     color:black; 
 }
+
+.navbar-container{
+    display:flex; 
+    justify-content:space-between; 
+    flex: 1; 
+}
+
+.adjustment{
+    display:flex; 
+    justify-content: flex-end
+}

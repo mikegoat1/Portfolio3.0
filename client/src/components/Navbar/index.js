@@ -44,15 +44,15 @@ function NavBar() {
     return (
         <Navbar style={styles.NavBackground} >
 
-            <Container>
+            <Container className="" >
 
-                <Row className="d-flex flex-grow-1 " >
+                <Row className="navbar-container" >
                     {/* Name  */}
                     <Col md={6} >
                         <Navbar.Brand style={styles.name} className="text-left"> Michael L. Johnson</Navbar.Brand>
                     </Col>
                     {/* Items  */}
-                    <Col md={6} className="text-right" >
+                    <Col md={6} className="text-right adjustment" >
                         <Nav style={styles.item} className="decoration-decoration-none color" >
                             <Nav.Link style={{color:"black"}} href="#about-me" >About-Me</Nav.Link>
                             <Nav.Link style={{color:"black"}} href="#work" > Work </Nav.Link>
