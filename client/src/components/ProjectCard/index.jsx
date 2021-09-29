@@ -10,7 +10,7 @@ import { Button } from "react-bootstrap";
 
 
 
-function Projects({name1,name2,image1,image2,lang1,lang2}) {
+function Projects({name1,name2,image1,image2,lang1,lang2,link1, link2, deploy1, deploy2}) {
 
 
 
@@ -18,16 +18,16 @@ function Projects({name1,name2,image1,image2,lang1,lang2}) {
         <Container className="project-section-container" >
             <Row>
 
-                <Col >
+                <Col sm={12} md={6} >
                     <Row className="project-container" >
-                        <Col md={6}>
+                        <Col sm={6} md={6}>
                             <Image
                                 className="project-image"
                                 src={image1}
                                 alt={name1}
                             ></Image>
                         </Col>
-                        <Col md={6} >
+                        <Col sm={6} md={6} >
                             <Row className="project-info-container" >
                                 <Col md={12} className="p-2 project-title " >
                                     <h4><u> Title: </u> <span>{name1}</span> </h4>
@@ -35,25 +35,25 @@ function Projects({name1,name2,image1,image2,lang1,lang2}) {
                                     <h6>{lang1}</h6>
                                 </Col>
                                 <Col md={12} className="justify-content-around d-flex align-items-center" >
-                                    <Button className="project-button" href="https://github.com/RandonRussell85/FliccPicker">GitHub</Button>
-                                    <Button className="project-button" href="https://mikegoat1.github.io/FliccPicker/">Deployed</Button>
+                                    <Button className="project-button" href={link1}>GitHub</Button>
+                                    <Button className="project-button" href={deploy1}>Deployed</Button>
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
                 </Col>
 
-                <Col >
+                <Col sm={12} md={6} >
                     <Row className="project-container" >
                         
-                        <Col md={6}>
+                        <Col sm={6} md={6}>
                             <Image
                                 className="project-image"
                                 src={image2}
                                 alt={name2}
                             ></Image>
                         </Col>
-                        <Col md={6}>
+                        <Col sm={6} md={6}>
                             <Row className="project-info-container" >
                                 <Col md={12} className="p-2 project-title " >
                                     <h4><u> Title:</u> <span>{name2}</span> </h4>
@@ -61,8 +61,8 @@ function Projects({name1,name2,image1,image2,lang1,lang2}) {
                                     <h6>{lang2}</h6>
                                 </Col>
                                 <Col md={12} className="justify-content-around d-flex align-items-center" >
-                                    <Button className="project-button" href="https://github.com/chrischo94/audioFreq">GitHub</Button>
-                                    <Button className="project-button" href="https://audio-freq.herokuapp.com">Deployed</Button>
+                                    <Button className="project-button" href={link2}>GitHub</Button>
+                                    <Button className="project-button" href={deploy2}>Deployed</Button>
                                 </Col>
                             </Row>
                         </Col>
