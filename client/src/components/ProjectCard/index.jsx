@@ -20,14 +20,14 @@ function Projects({name1,name2,image1,image2,lang1,lang2}) {
 
                 <Col >
                     <Row className="project-container" >
-                        <Col>
+                        <Col md={6}>
                             <Image
                                 className="project-image"
                                 src={image1}
                                 alt={name1}
                             ></Image>
                         </Col>
-                        <Col>
+                        <Col md={6} >
                             <Row className="project-info-container" >
                                 <Col md={12} className="p-2 project-title " >
                                     <h4><u> Title: </u> <span>{name1}</span> </h4>
@@ -46,14 +46,14 @@ function Projects({name1,name2,image1,image2,lang1,lang2}) {
                 <Col >
                     <Row className="project-container" >
                         
-                        <Col>
+                        <Col md={6}>
                             <Image
                                 className="project-image"
                                 src={image2}
                                 alt={name2}
                             ></Image>
                         </Col>
-                        <Col>
+                        <Col md={6}>
                             <Row className="project-info-container" >
                                 <Col md={12} className="p-2 project-title " >
                                     <h4><u> Title:</u> <span>{name2}</span> </h4>

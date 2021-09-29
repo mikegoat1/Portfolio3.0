@@ -25,3 +25,7 @@ Nav.Link {
     display:flex; 
     justify-content: flex-end
 }
+
+.container{
+    flex:1 1 
+}
