@@ -9,6 +9,7 @@ const styles = {
         height: "76px",
         width: "72px",
         flex: 0,
+        border: "1px solid black", 
     },
     containerProfile: {
         border: " 2px solid #000000",
@@ -20,7 +21,7 @@ const styles = {
     },
     proffession: {
         lineHeight:"80px", 
-        fontSize: "14px",
+        fontSize: "18px",
     }
 
 }

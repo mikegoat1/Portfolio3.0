@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/Portfolio3.0/static/css/main.66b04825.chunk.css",
+    "main.js": "/Portfolio3.0/static/js/main.57da4b0d.chunk.js",
+    "main.js.map": "/Portfolio3.0/static/js/main.57da4b0d.chunk.js.map",
+    "runtime-main.js": "/Portfolio3.0/static/js/runtime-main.903ff02b.js",
+    "runtime-main.js.map": "/Portfolio3.0/static/js/runtime-main.903ff02b.js.map",
+    "static/js/2.a8530a3c.chunk.js": "/Portfolio3.0/static/js/2.a8530a3c.chunk.js",
+    "static/js/2.a8530a3c.chunk.js.map": "/Portfolio3.0/static/js/2.a8530a3c.chunk.js.map",
+    "static/js/3.f7d772ee.chunk.js": "/Portfolio3.0/static/js/3.f7d772ee.chunk.js",
+    "static/js/3.f7d772ee.chunk.js.map": "/Portfolio3.0/static/js/3.f7d772ee.chunk.js.map",
+    "index.html": "/Portfolio3.0/index.html",
+    "static/css/main.66b04825.chunk.css.map": "/Portfolio3.0/static/css/main.66b04825.chunk.css.map",
+    "static/js/2.a8530a3c.chunk.js.LICENSE.txt": "/Portfolio3.0/static/js/2.a8530a3c.chunk.js.LICENSE.txt",
+    "static/media/Google.f3954808.png": "/Portfolio3.0/static/media/Google.f3954808.png",
+    "static/media/Great-Quiz.41f8c639.png": "/Portfolio3.0/static/media/Great-Quiz.41f8c639.png",
+    "static/media/HeroImg.43521fe1.jpg": "/Portfolio3.0/static/media/HeroImg.43521fe1.jpg",
+    "static/media/Me.19f81b4e.jpg": "/Portfolio3.0/static/media/Me.19f81b4e.jpg",
+    "static/media/Note.18bd069a.png": "/Portfolio3.0/static/media/Note.18bd069a.png",
+    "static/media/UCLA Resume 8-22-21 PDF.b07aa976.pdf": "/Portfolio3.0/static/media/UCLA Resume 8-22-21 PDF.b07aa976.pdf",
+    "static/media/envelope.430182aa.png": "/Portfolio3.0/static/media/envelope.430182aa.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.903ff02b.js",
+    "static/js/2.a8530a3c.chunk.js",
+    "static/css/main.66b04825.chunk.css",
+    "static/js/main.57da4b0d.chunk.js"
+  ]
+}
