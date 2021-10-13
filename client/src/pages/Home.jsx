@@ -29,7 +29,7 @@ const styles = {
 function Home() {
 
 
-
+//I want the COL to get there own row at this min 
 
 
 
@@ -37,11 +37,11 @@ function Home() {
         <div>
             <NavBar />
             <Container>
-                <Row style={styles.marginTop} >
-                    <Col md={6}>
-                        <Hero />
+                <Row style={styles.marginTop}  >
+                    <Col lg={6}  className="hero-media" sm >
+                        <Hero/>
                     </Col>
-                    <Col md={6} >
+                    <Col lg={6}  sm >
                         <Row>
                             <Col style={styles.ColFlex} md={7} >
                                 <ProfileHead />
@@ -57,7 +57,7 @@ function Home() {
                     </Col>
                 </Row>
             </Container>
-            <Container>
+            <Container id="work" >
                 <Row className="flex-row" >
                     <Col md={12} >
                         <Projects

@@ -34,3 +34,11 @@
     border-radius: 5.61905px;
     color: #FF2442; 
 }
+
+@media screen and (max-width:1150px){
+    .project-section-container{
+        width:100%; 
+        display:flex;
+       
+    }
+}

@@ -11,7 +11,7 @@ function Footer() {
 
 
     return (
-        <Container className="footer-container d-flex justify-content-center text-align-center">
+        <Container id="contact-me" className="footer-container d-flex justify-content-center text-align-center">
             <Row>
                 <Col md={12} className=" contact" > Contacts</Col>
                 <Col md={12} className="icons d-flex align-self-center justify-content-center" >

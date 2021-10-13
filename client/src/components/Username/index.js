@@ -16,6 +16,7 @@ const styles = {
         height: "92px",
         padding: "3px",
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        backgroundColor: "#FF2442",
     },
     proffession: {
         lineHeight:"80px", 
@@ -26,7 +27,7 @@ const styles = {
 
 function ProfileHeading() {
     return (
-        <Container style={styles.containerProfile} >
+        <Container id="about-me" style={styles.containerProfile} >
             <Row>
                 <Col className="imageFlex" style={{ flex: 0 }} >
                     <Image style={styles.profileImage} src={image} roundedCircle />

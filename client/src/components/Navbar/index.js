@@ -56,7 +56,7 @@ function NavBar() {
                         <Nav style={styles.item} className="decoration-decoration-none color" >
                             <Nav.Link style={{color:"black"}} href="#about-me" >About-Me</Nav.Link>
                             <Nav.Link style={{color:"black"}} href="#work" > Work </Nav.Link>
-                            <Nav.Link style={{color: "black"}} > Contact-Me </Nav.Link>
+                            <Nav.Link style={{color: "black"}} href="#contact-me" > Contact-Me </Nav.Link>
                             <Nav.Link style={{color: "black"}} href={Resume} > Resume </Nav.Link>
                             <Nav.Link style={{color: "black"}} href={Resume} download={Resume} > <AiOutlineDownload/> </Nav.Link>
                         </Nav>
