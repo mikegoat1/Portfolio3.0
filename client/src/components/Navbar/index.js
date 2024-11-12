@@ -5,9 +5,9 @@ import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 
 import { Navbar } from "react-bootstrap";
-import { Nav } from "react-bootstrap"; 
+import { Nav } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
-import Resume from "../../UCLA Resume 8-22-21 PDF.pdf" ; 
+import Resume from "../../UCLA Resume 8-22-21 PDF.pdf";
 
 
 const styles = {
@@ -22,14 +22,14 @@ const styles = {
     },
     name: {
         justifyContent: "start",
-        fontSize: "26px", 
+        fontSize: "26px",
     },
     item: {
         fontSize: "18px",
         lineHeight: "26px",
         margin: "0 5px",
         justifyContent: "end",
-        color:"black"
+        color: "black"
 
     }
 
@@ -48,17 +48,17 @@ function NavBar() {
 
                 <Row className="navbar-container" >
                     {/* Name  */}
-                    <Col  md={6} >
+                    <Col md={6} >
                         <Navbar.Brand style={styles.name} className="text-left"> Michael L. Johnson</Navbar.Brand>
                     </Col>
                     {/* Items  */}
-                    <Col  md={6} className="text-right adjustment" >
+                    <Col md={6} className="text-right adjustment" >
                         <Nav style={styles.item} className="decoration-decoration-none color" >
-                            <Nav.Link style={{color:"black"}} href="#about-me" >About-Me</Nav.Link>
-                            <Nav.Link style={{color:"black"}} href="#work" > Work </Nav.Link>
-                            <Nav.Link style={{color: "black"}} href="#contact-me" > Contact-Me </Nav.Link>
-                            <Nav.Link style={{color: "black"}} href={Resume} > Resume </Nav.Link>
-                            <Nav.Link style={{color: "black"}} href={Resume} download={Resume} > <AiOutlineDownload/> </Nav.Link>
+                            <Nav.Link style={{ color: "black" }} href="#about-me" >About-Me</Nav.Link>
+                            <Nav.Link style={{ color: "black" }} href="#work" > Work </Nav.Link>
+                            <Nav.Link style={{ color: "black" }} href="#contact-me" > Contact-Me </Nav.Link>
+                            <Nav.Link style={{ color: "black" }} href={Resume} > Resume </Nav.Link>
+                            <Nav.Link style={{ color: "black" }} href={Resume} download={Resume} > <AiOutlineDownload /> </Nav.Link>
                         </Nav>
                     </Col>
 
