@@ -1,6 +1,5 @@
 import React from "react";
 import "./style.css";
-import NavBar from "../../components/Navbar";
 import Hero from "../../components/Hero Image/inedx";
 import ProfileHead from "../../components/Username/index";
 import Skills from "../../components/SkillsComp/index";
@@ -29,7 +28,6 @@ function Home() {
 
   return (
     <div>
-      <NavBar />
       <Container>
         <Row style={styles.marginTop}>
           <Col lg={6} className="hero-media" sm>

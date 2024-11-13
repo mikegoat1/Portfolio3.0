@@ -61,12 +61,65 @@ const NavBar = () => {
                 color: 'var(--AppBar-color)',
             }}>
             <Box style={styles.navBar}>
-                <Typography variant="h1" sx={{ display: { xs: "none", sm: 'flex' } }} style={{ fontFamily: "Inter", fontSize: "26px" }}>Michael L. Johnson</Typography>
-                <Tabs value={value} sx={{ display: { xs: "none", sm: 'flex' } }} onChange={(newValue) => setValue(newValue)} >
-                    <Tab label="About Me" component={Link} to="/"/>
-                    <Tab label="Work" component={Link} to="/work" />
-                    <Tab label="Contact Me" component={Link} to="#footer" />
-                    <Tab label="Resume" component={Link} to="/resume" />
+                <Typography variant="h1" sx={{ display: { xs: "none", sm: 'flex' } }} style={{ fontFamily: "Playfair Display", fontSize: "26px" }}>Michael L. Johnson</Typography>
+                <Tabs
+                    value={value}
+                    sx={{
+                        display: { xs: "none", sm: 'flex' },
+                        '& .MuiTabs-indicator': {
+                            backgroundColor: '#6A7BA2',
+                        },
+                    }}
+                    onChange={(newValue) => setValue(newValue)} >
+                    <Tab
+                        label="About Me"
+                        component={Link}
+                        to="/"
+                        sx={{
+                            '&:hover': {
+                                color: '#6A7BA2',
+                            },
+                            '&.Mui-selected': {
+                                color: '#6A7BA2',
+                            },
+                        }}
+                    />
+                    <Tab
+                        label="Work"
+                        component={Link}
+                        to="/work"
+                        sx={{
+                            '&:hover': {
+                                color: '#6A7BA2',
+                            },
+                            '&.Mui-selected': {
+                                color: '#6A7BA2',
+                            },
+                        }} />
+                    <Tab
+                        label="Contact Me"
+                        component={Link}
+                        to="#footer"
+                        sx={{
+                            '&:hover': {
+                                color: '#6A7BA2',
+                            },
+                            '&.Mui-selected': {
+                                color: '#6A7BA2',
+                            },
+                        }} />
+                    <Tab
+                        label="Resume"
+                        component={Link}
+                        to="/resume"
+                        sx={{
+                            '&:hover': {
+                                color: '#6A7BA2',
+                            },
+                            '&.Mui-selected': {
+                                color: '#6A7BA2',
+                            },
+                        }} />
                     <Tab label={<AiOutlineDownload />} onClick={handleDownload} />
                 </Tabs>
             </Box>
@@ -87,13 +140,13 @@ const NavBar = () => {
             >
                 <List>
                     <ListItem button component={Link} to="/" onClick={handleDrawerToggle}>
-                        <ListItemText primary="About Me"  sx={{ color: '#3C3C3C' }} />
+                        <ListItemText primary="About Me" sx={{ color: '#3C3C3C' }} />
                     </ListItem>
                     <ListItem button component={Link} to="/work" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Work"  sx={{ color: '#3C3C3C' }} />
+                        <ListItemText primary="Work" sx={{ color: '#3C3C3C' }} />
                     </ListItem>
                     <ListItem button component={Link} to="#footer" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Contact Me"  sx={{ color: '#3C3C3C' }} />
+                        <ListItemText primary="Contact Me" sx={{ color: '#3C3C3C' }} />
                     </ListItem>
                     <ListItem button onClick={handleDownload} >
                         <ListItemText primary="View Resume" />
