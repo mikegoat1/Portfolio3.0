@@ -2,6 +2,8 @@ import React from "react";
 import "./style.css"
 import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
+import { Box, Tabs, Tab } from "@mui/material";
+import PropTypes from "prop-types";
 import Resume from "../../UCLA Resume 8-22-21 PDF.pdf";
 
 
@@ -30,30 +32,44 @@ const styles = {
 
 };
 const NavBar = () => {
-
+    // I am going to make a screen for each tab going forward with the refactor.
     return (
-        <Navbar style={styles.NavBackground} >
+        <>
+            <Box display='flex' justifyContent='end'>
+                <Tabs value={0} >
+                    <Tab label="About Me" value={0} />
+                    <Tab label="Work" value={1} />
+                    <Tab label="Contact Me" value={2} />
+                    <Tab label="Resume" value={3} />
+                </Tabs>
 
-            <Container className="container" >
-                <Row className="navbar-container" >
-                    {/* Name  */}
-                    <Col md={6} >
-                        <Navbar.Brand style={styles.name} className="text-left"> Michael L. Johnson</Navbar.Brand>
-                    </Col>
-                    {/* Items  */}
-                    <Col md={6} className="text-right adjustment" >
-                        <Nav style={styles.item} className="decoration-decoration-none color" >
-                            <Nav.Link style={{ color: "black" }} href="#about-me" >About-Me</Nav.Link>
-                            <Nav.Link style={{ color: "black" }} href="#work" > Work </Nav.Link>
-                            <Nav.Link style={{ color: "black" }} href="#contact-me" > Contact-Me </Nav.Link>
-                            <Nav.Link style={{ color: "black" }} href={Resume} > Resume </Nav.Link>
-                            <Nav.Link style={{ color: "black" }} href={Resume} download={Resume} > <AiOutlineDownload /> </Nav.Link>
-                        </Nav>
-                    </Col>
 
-                </Row>
-            </Container>
-        </Navbar>
+
+            </Box>
+            <Navbar style={styles.NavBackground} >
+
+                <Container className="container" >
+                    <Row className="navbar-container" >
+                        {/* Name  */}
+                        <Col md={6} >
+                            <Navbar.Brand style={styles.name} className="text-left"> Michael L. Johnson</Navbar.Brand>
+                        </Col>
+                        {/* Items  */}
+                        <Col md={6} className="text-right adjustment" >
+                            <Nav style={styles.item} className="decoration-decoration-none color" >
+                                <Nav.Link style={{ color: "black" }} href="#about-me" >About-Me</Nav.Link>
+                                <Nav.Link style={{ color: "black" }} href="#work" > Work </Nav.Link>
+                                <Nav.Link style={{ color: "black" }} href="#contact-me" > Contact-Me </Nav.Link>
+                                <Nav.Link style={{ color: "black" }} href={Resume} > Resume </Nav.Link>
+                                <Nav.Link style={{ color: "black" }} href={Resume} download={Resume} > <AiOutlineDownload /> </Nav.Link>
+                            </Nav>
+                        </Col>
+
+                    </Row>
+                </Container>
+            </Navbar>
+        </>
+
     );
 }
 
