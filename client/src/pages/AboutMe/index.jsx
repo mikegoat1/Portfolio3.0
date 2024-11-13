@@ -38,29 +38,50 @@ function Home() {
           </Grid>
 
           {/* Right Side: About Me Text */}
-          <Grid item size={{ md: 8, sm: 7, xs: 12 }}>
-            <Typography variant="h4" gutterBottom>
+          <Grid item sx={{ color: "#8A8F99" }} size={{ md: 8, sm: 7, xs: 12 }}>
+            <Typography sx={{ color: "#3C3C3C" }} variant="h4" gutterBottom>
               About Me
             </Typography>
-            <Typography variant="body1" component="p">
-              Hello! I'm [Your Name], a [Your Job Title or Specialization]. With
-              a passion for creating meaningful digital experiences, I
-              specialize in [Your Skills/Field of Expertise].
+            <Typography variant="body1" gutterBottom component="p">
+            I’m a Full-Stack Developer based in Los Angeles, CA, with a
+              passion for creating digital experiences that are both
+              user-friendly and technically sound. Over the past 5+ years, I’ve
+              had the privilege to work with renowned companies like Apple and
+              2U, bringing my expertise in UI/UX design and full-stack
+              development to each project.
             </Typography>
-            <Typography variant="body1" component="p">
-              Over the years, I've honed my skills in [mention key skills, e.g.,
-              user-centered design, interaction design, front-end development,
-              etc.], allowing me to bring innovative solutions to each project.
-              Whether I'm designing a mobile app or an e-commerce website, I
-              focus on understanding user needs to create intuitive and
-              impactful experiences.
+
+            <Typography variant="body2" component="p">
+            My journey into tech started with a curiosity for how things work
+              behind the screen, leading me to pursue certifications and
+              hands-on experiences. I’ve grown from supporting clients with
+              technical issues at Apple’s Tower Theater to developing
+              user-centered solutions for Apple’s marketing teams. Along the
+              way, I’ve also taught coding and mentored students, igniting a
+              passion for knowledge-sharing and collaboration.
             </Typography>
-            <Typography variant="body1" component="p">
-              When I'm not working, I enjoy [mention hobbies or interests that
-              reflect your personality and relatability, e.g., photography,
-              traveling, or reading up on the latest in tech trends]. I'm always
-              eager to take on new challenges and continue learning in this
-              dynamic field.
+
+            {/* Skills and Expertise */}
+            <Typography variant="h5" gutterBottom sx={{ color: "#3C3C3C" }}>
+              My Skills at a Glance
+            </Typography>
+            <Typography variant="body2" component="p">
+              I’m fluent in technologies like React.js, Node.js, and AWS, and I
+              have experience with design and problem-solving in both front-end
+              and back-end development. Whether it’s creating a seamless user
+              interface or managing complex data with MongoDB and MySQL, I
+              thrive on finding efficient, innovative solutions.
+            </Typography>
+
+            {/* Personal Interests */}
+            <Typography variant="h5" gutterBottom sx={{ color: "#3C3C3C" }}>
+              When I’m Not Coding...
+            </Typography>
+            <Typography variant="body2" component="p" gutterBottom >
+              You’ll likely find me exploring new places, bouldering, or testing
+              out the latest tech gadgets. I believe in a balanced life, and
+              these hobbies give me fresh perspectives and inspiration that I
+              bring back to my work.
             </Typography>
           </Grid>
         </Grid>
