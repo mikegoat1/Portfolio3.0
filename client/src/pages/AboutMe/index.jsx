@@ -1,16 +1,16 @@
 import React from "react";
 import "./style.css";
-import NavBar from "../components/Navbar";
-import Hero from "../components/Hero Image/inedx";
-import ProfileHead from "../components/Username/index";
-import Skills from "../components/SkillsComp/index";
-import AboutMe from "../components/AboutContainer/index";
-import Projects from "../components/ProjectCard/index";
-import Footer from "../components/Footer/index";
+import NavBar from "../../components/Navbar";
+import Hero from "../../components/Hero Image/inedx";
+import ProfileHead from "../../components/Username/index";
+import Skills from "../../components/SkillsComp/index";
+import AboutMe from "../../components/AboutContainer/index";
+import Projects from "../../components/ProjectCard/index";
+import Footer from "../../components/Footer/index";
 
-import Quiz from "../assets/Great-Quiz.png";
-import Note from "../assets/Note.png";
-import Book from "../assets/Google.png";
+import Quiz from "../../assets/Great-Quiz.png";
+import Note from "../../assets/Note.png";
+import Book from "../../assets/Google.png";
 
 import { Container, Row, Col } from "react-bootstrap";
 
