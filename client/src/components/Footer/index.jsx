@@ -19,15 +19,18 @@ const Footer = () => {
           sx={{
             backgroundColor: "#E7E9EC",
             "& .MuiBottomNavigationAction-root": {
-              color: "#3C3C3C",
+              color: "#3C3C3C !important",
               "&:hover": {
-                color: "#6A7BA2",
+                color: "#6A7BA2 !important",
+              },
+              "&.Mui-selected": {
+                color: "#3C3C3C !important",
               },
             },
             "& .MuiSvgIcon-root": {
-              color: "#3C3C3C",
+              color: "#3C3C3C !important",
               "&:hover": {
-                color: "#6A7BA2",
+                color: "#6A7BA2 !important",
               },
             },
           }}

@@ -27,7 +27,7 @@ function Home() {
           minHeight: "100vh",
         }}
       >
-        <Grid container spacing={9} alignItems="center">
+        <Grid container spacing={4} alignItems="center">
           {/* Left Side: Image */}
           <Grid size={{ md: 4, sm: 5, xs: 12 }} item>
             <Avatar
@@ -50,9 +50,8 @@ function Home() {
               2U, bringing my expertise in UI/UX design and full-stack
               development to each project.
             </Typography>
-
             <Typography variant="body2" component="p">
-            My journey into tech started with a curiosity for how things work
+            <strong style={{ color: "#3C3C3C" }}> My journey </strong>into tech started with a curiosity for how things work
               behind the screen, leading me to pursue certifications and
               hands-on experiences. I’ve grown from supporting clients with
               technical issues at Apple’s Tower Theater to developing
@@ -62,19 +61,19 @@ function Home() {
             </Typography>
 
             {/* Skills and Expertise */}
-            <Typography variant="h5" gutterBottom sx={{ color: "#3C3C3C" }}>
+            <Typography variant="h5" gutterBottom sx={{ color: "#B9D3B0" }}>
               My Skills at a Glance
             </Typography>
             <Typography variant="body2" component="p">
-              I’m fluent in technologies like React.js, Node.js, and AWS, and I
+              I’m fluent in technologies like <strong style={{color: "#3C3C3C" }}>React.js, Node.js,</strong> and <strong style={{color: "#3C3C3C" }}>AWS,</strong>  and I
               have experience with design and problem-solving in both front-end
               and back-end development. Whether it’s creating a seamless user
-              interface or managing complex data with MongoDB and MySQL, I
+              interface or managing complex data with <strong style={{color: "#3C3C3C" }}> MongoDB </strong>and <strong style={{color: "#3C3C3C" }}>MySQL,</strong>  I
               thrive on finding efficient, innovative solutions.
             </Typography>
 
             {/* Personal Interests */}
-            <Typography variant="h5" gutterBottom sx={{ color: "#3C3C3C" }}>
+            <Typography variant="h6" gutterBottom sx={{ color: "#B9D3B0" }}>
               When I’m Not Coding...
             </Typography>
             <Typography variant="body2" component="p" gutterBottom >
