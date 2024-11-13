@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 
 import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -10,7 +9,7 @@ const Footer = () => {
   const [value, setValue] = React.useState(0);
   return (
     <>
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", position: 'fixed', bottom: 0, left: 0, right: 0 }}>
         <BottomNavigation
           showLabels
           value={value}

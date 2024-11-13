@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./stye.module.css";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Box, Tabs, Tab, Typography, AppBar, IconButton, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
