@@ -1,11 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./style.css"
-import { Container } from "react-bootstrap";
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
-
-import { Navbar } from "react-bootstrap";
-import { Nav } from "react-bootstrap";
+import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
 import Resume from "../../UCLA Resume 8-22-21 PDF.pdf";
 
@@ -34,18 +29,12 @@ const styles = {
     }
 
 };
-function NavBar() {
-
-
-
-
-
+const NavBar = () => {
 
     return (
         <Navbar style={styles.NavBackground} >
 
             <Container className="container" >
-
                 <Row className="navbar-container" >
                     {/* Name  */}
                     <Col md={6} >
