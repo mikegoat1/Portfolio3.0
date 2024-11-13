@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./stye.module.css";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Box, Tabs, Tab, Typography, AppBar, IconButton, Drawer, List, ListItem, ListItemText } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Resume from "../../assets/10-31-24 Resume Coding .pdf";
 
 
@@ -30,7 +30,23 @@ const handleDownload = () => {
 const NavBar = () => {
     // Plan: Refactor each tab to navigate to a dedicated screen/component for better organization and maintainability.
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const location = useLocation();
     const [value, setValue] = useState(0);
+
+    useEffect(() => {
+        if (location.pathname === '/') {
+            setValue(0);
+        }
+        if (location.pathname === '/work') {
+            setValue(1);
+        }
+        if (location.pathname === '/contact') {
+            setValue(2);
+        }
+        if (location.pathname === '/resume') {
+            setValue(3);
+        }
+    }, [location]);
 
 
     const handleDrawerToggle = () => {
@@ -70,16 +86,16 @@ const NavBar = () => {
                 onClose={handleDrawerToggle}
             >
                 <List>
-                    <ListItem button component={Link} to="/" >
-                        <ListItemText primary="About Me" />
+                    <ListItem button component={Link} to="/" onClick={handleDrawerToggle}>
+                        <ListItemText primary="About Me"  sx={{ color: '#3C3C3C' }} />
                     </ListItem>
-                    <ListItem button component={Link} to="/work">
-                        <ListItemText primary="Work" />
+                    <ListItem button component={Link} to="/work" onClick={handleDrawerToggle}>
+                        <ListItemText primary="Work"  sx={{ color: '#3C3C3C' }} />
                     </ListItem>
-                    <ListItem button component={Link} to="#footer">
-                        <ListItemText primary="Contact Me" />
+                    <ListItem button component={Link} to="#footer" onClick={handleDrawerToggle}>
+                        <ListItemText primary="Contact Me"  sx={{ color: '#3C3C3C' }} />
                     </ListItem>
-                    <ListItem button onClick={handleDownload}>
+                    <ListItem button onClick={handleDownload} >
                         <ListItemText primary="View Resume" />
                     </ListItem>
                 </List>
