@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./style.css";
 
-import Envelope from "../../envelope.png";
+import Envelope from "../../assets/envelope.png";
 
 import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
@@ -72,7 +72,7 @@ function Footer() {
           </svg>
           {/* Email */}
           <a href="mailto:mikeg.o.a.t.1@gmail.com">
-            <img className="envelope" src={Envelope} />
+            <img className="envelope" src={Envelope} alt="Envelope icon" />
           </a>
         </Col>
       </Row>
