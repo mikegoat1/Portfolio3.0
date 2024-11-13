@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Image } from "react-bootstrap";
 
-import image from "../../Me.jpg"
+import image from "../../assets/Me.jpg";
 
 const styles = {
     profileImage: {
         height: "76px",
         width: "72px",
         flex: 0,
-        border: "1px solid black", 
+        border: "1px solid black",
     },
     containerProfile: {
         border: " 2px solid #000000",
@@ -20,7 +20,7 @@ const styles = {
         backgroundColor: "#FF2442",
     },
     proffession: {
-        lineHeight:"80px", 
+        lineHeight: "80px",
         fontSize: "18px",
     }
 

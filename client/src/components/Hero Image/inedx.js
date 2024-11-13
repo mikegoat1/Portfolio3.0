@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Image } from "react-bootstrap";
-import image from "../../HeroImg.jpg"
+import image from "../../assets/HeroImg.jpg"
 
 const styles = {
     ImgSize: {

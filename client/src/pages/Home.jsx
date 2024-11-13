@@ -8,9 +8,9 @@ import AboutMe from "../components/AboutContainer/index";
 import Projects from "../components/ProjectCard/index";
 import Footer from "../components/Footer/index";
 
-import Quiz from "../Great-Quiz.png";
-import Note from "../Note.png";
-import Book from "../Google.png";
+import Quiz from "../assets/Great-Quiz.png";
+import Note from "../assets/Note.png";
+import Book from "../assets/Google.png";
 
 import { Container, Row, Col } from "react-bootstrap";
 
