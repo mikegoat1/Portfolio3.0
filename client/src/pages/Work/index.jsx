@@ -45,16 +45,25 @@ const projects = [
 const Work = () => {
   const classes = useStyles();
   return (
-    <Container maxWidth="md" sx={{display: "flex",
+    <Container
+      maxWidth="md"
+      sx={{
+        display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        minHeight: "100vh",}}>
-      <Typography variant="h4" sx={{ display: "flex", justifyContent: "center"}} gutterBottom>
+        minHeight: "100vh",
+      }}
+    >
+      <Typography
+        variant="h4"
+        sx={{ display: "flex", justifyContent: "center" }}
+        gutterBottom
+      >
         My Projects
       </Typography>
-      <Grid2 container spacing={4}>
+      <Grid2 container spacing={4} justifyContent="center" alignItems="center">
         {projects.map((project, index) => (
-          <Grid2 item xs={12} sm={6} md={4} key={index}>
+          <Grid2 item size={{ md: 4, sm: 6, xs: 12 }} key={index}>
             <Card className={classes.root}>
               <CardMedia
                 className={classes.media}
