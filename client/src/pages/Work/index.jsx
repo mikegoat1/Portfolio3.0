@@ -6,11 +6,13 @@ import {
   CardMedia,
   Container,
   Grid2,
+  IconButton,
   Typography,
 } from "@mui/material";
 import React from "react";
 import { makeStyles } from "@mui/styles";
-
+import GitHubIcon from "@mui/icons-material/GitHub";
+import WebIcon from '@mui/icons-material/Web';
 // I want to create a landing page first, then have the user navigate to the about me page.
 
 const useStyles = makeStyles({
@@ -28,18 +30,22 @@ const projects = [
     description: "This is a description of project 1.",
     image: "https://via.placeholder.com/140",
     link: "#",
+    gitHub: "#",
   },
   {
     title: "Project 2",
     description: "This is a description of project 2.",
     image: "https://via.placeholder.com/140",
     link: "#",
+    gitHub: "#",
+
   },
   {
     title: "Project 3",
     description: "This is a description of project 3.",
     image: "https://via.placeholder.com/140",
     link: "#",
+    gitHub: "#",
   },
 ];
 const Work = () => {
@@ -79,9 +85,12 @@ const Work = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary" href={project.link}>
-                  Learn More
-                </Button>
+                <IconButton href={project.gitHub} aria-label="GitHub Link">
+                    <GitHubIcon />
+                </IconButton>
+                <IconButton href={project.link} aria-label="Host Link">
+                    <WebIcon />
+                </IconButton>
               </CardActions>
             </Card>
           </Grid2>
