@@ -10,7 +10,8 @@ const PdfViewer = () => {
         workerUrl={`https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.min.js`}
       >
         <Viewer fileUrl={pdfUrl} />
-      </Worker>
+      </Worker> 
+      
     </>
   );
 };
