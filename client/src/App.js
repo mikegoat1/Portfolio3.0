@@ -6,19 +6,18 @@ import Resume from "./pages/Resume";
 import './App.css';
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
+import LandingPage from "./pages/LandingPage";
 
 
 function App() {
   return (
     <>
-      <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<Home />} />
-        <Route path="/work" element={<Work />} />
-        <Route path="/resume" element={<Resume />} />"
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<><NavBar /><Home /><Footer /></>} />
+        <Route path="/work" element={<><NavBar /><Work /><Footer /></>} />
+        <Route path="/resume" element={<><NavBar /><Resume /><Footer /></>} />
       </Routes>
-      <Footer />
 
     </>
 
