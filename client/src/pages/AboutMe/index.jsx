@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Typography, Avatar } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import backgroundImage from "../../assets/background.jpg";
+import backgroundImage from "../../assets/Green.jpg";
 
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "right",
-            opacity: 0.1,
+            opacity: 0.2,
             zIndex: -1,
           },
         }}
@@ -46,7 +46,7 @@ const Home = () => {
           </Grid>
 
           {/* Right Side: About Me Text */}
-          <Grid item sx={{ color: "#8A8F99" }} size={{ md: 8, sm: 7, xs: 12 }}>
+          <Grid item sx={{ color: "#838487" }} size={{ md: 8, sm: 7, xs: 12 }}>
             <Typography sx={{ color: "#3C3C3C" }} variant="h4" gutterBottom>
               About Me
             </Typography>
@@ -71,7 +71,7 @@ const Home = () => {
             </Typography>
 
             {/* Skills and Expertise */}
-            <Typography variant="h5" gutterBottom sx={{ color: "#B9D3B0" }}>
+            <Typography variant="h5" gutterBottom sx={{ color: "#7cbad1" }}>
               My Skills at a Glance
             </Typography>
             <Typography variant="body2" component="p">
@@ -87,7 +87,7 @@ const Home = () => {
             </Typography>
 
             {/* Personal Interests */}
-            <Typography variant="h6" gutterBottom sx={{ color: "#B9D3B0" }}>
+            <Typography variant="h6" gutterBottom sx={{ color: "#7cbad1" }}>
               When I’m Not Coding...
             </Typography>
             <Typography variant="body2" component="p" gutterBottom>

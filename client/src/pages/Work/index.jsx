@@ -20,7 +20,7 @@ import Flicc from "../../assets/FLICCPICKER.png";
 import Lemon from "../../assets/Logo.png";
 import { styled } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import backgroundImage from "../../assets/background.jpg";
 
 // I want to create a landing page first, then have the user navigate to the about me page.
 
@@ -147,6 +147,18 @@ const Work = () => {
         minHeight: "100vh",
         marginTop: "5rem",
         marginBottom: "5rem",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          opacity: 0.3,
+          zIndex: -1,
+        },
       }}
     >
       <Typography
