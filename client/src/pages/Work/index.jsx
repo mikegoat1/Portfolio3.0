@@ -38,8 +38,8 @@ const useStyles = makeStyles({
     color: "#8A8F99",
   },
   chip: {
-    backgroundColor: "#A8BCA1", // Dusty Sage background color for tags
-    color: "#3C3C3C", // Charcoal color for the text
+    backgroundColor: "#A8BCA1",
+    color: "#3C3C3C",
     marginRight: 4,
     marginBottom: 4,
   },
@@ -224,7 +224,7 @@ const Work = () => {
                   aria-label="show more"
                   sx={{ alignSelf: "flex-end" }}
                 >
-                  <ExpandMoreIcon  />
+                  <ExpandMoreIcon />
                 </ExpandMore>
               </CardActions>
               <Collapse in={expanded === index} timeout="auto" unmountOnExit>
