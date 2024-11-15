@@ -147,7 +147,7 @@ const NavBar = () => {
                     <ListItem button component={Link} to="#footer" onClick={handleDrawerToggle}>
                         <ListItemText primary="Contact Me" sx={{ color: '#3C3C3C' }} />
                     </ListItem>
-                    <ListItem button onClick={handleDownload} >
+                    <ListItem button onClick={handleDownload}>
                         <ListItemText primary="View Resume" />
                     </ListItem>
                 </List>

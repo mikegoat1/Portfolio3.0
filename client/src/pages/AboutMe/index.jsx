@@ -25,7 +25,7 @@ const Home = () => {
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "right",
-            opacity: 0.2,
+            opacity: 0.15,
             zIndex: -1,
           },
         }}
