@@ -52,9 +52,6 @@ typings/
 # Optional npm cache directory
 .npm
 
-# Ensure the build directory is not ignored
-# Uncomment the following line if your build output directory is named 'build'
-# /build
 
 # Ensure the public directory is not ignored
 # Uncomment the following line if your public directory is named 'public'
