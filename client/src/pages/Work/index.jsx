@@ -4,18 +4,23 @@ import {
   CardContent,
   CardMedia,
   Chip,
+  Collapse,
   Container,
   Grid2,
   IconButton,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import WebIcon from "@mui/icons-material/Web";
 import Quiz from "../../assets/Great-Quiz.png";
 import Ticket from "../../assets/ticket-scalper.png";
 import Flicc from "../../assets/FLICCPICKER.png";
+import Lemon from "../../assets/Logo.png";
+import { styled } from "@mui/material/styles";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 // I want to create a landing page first, then have the user navigate to the about me page.
 
@@ -39,31 +44,81 @@ const useStyles = makeStyles({
     marginBottom: 4,
   },
 });
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme }) => ({
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
+    duration: theme.transitions.duration.shortest,
+  }),
+  variants: [
+    {
+      props: ({ expand }) => !expand,
+      style: {
+        transform: "rotate(0deg)",
+      },
+    },
+    {
+      props: ({ expand }) => !!expand,
+      style: {
+        transform: "rotate(180deg)",
+      },
+    },
+  ],
+}));
 
 const projects = [
   {
-    title: "Project 1",
-    description: "This is a description of project 1.",
+    title: "The Event",
+    description:
+      "The Event Management System is a platform for organizing and managing events, enabling users to create events, RSVP, and receive updates with features like real-time chat, event analytics, and a calendar with reminders. Built with Node.js, MongoDB, React, and deployed on Heroku, it offers secure authentication, seamless event creation, and an intuitive interface for managing attendees.",
     image: "https://via.placeholder.com/140",
-    link: "#",
-    gitHub: "#",
-    tags: ["HTML", "CSS", "JavaScript"],
+    gitHub: "https://github.com/mikegoat1/The-Eventers",
+    tags: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "MongoDB",
+      "JWT",
+      "Next.js",
+    ],
+  },
+  {
+    title: "Little Lemon",
+    description:
+      "Little Lemon is a React-based website for a fictional restaurant, featuring a user-friendly interface to explore the menu, learn about the restaurant, and make table reservations seamlessly",
+    image: Lemon,
+    gitHub: "https://github.com/mikegoat1/Little-Lemon",
+    tags: ["React", "HTML", "CSS", "JavaScript"],
   },
   {
     title: "Flick Picker",
-    description: "Ticket-Scalper is a ticket search platform that dynamically aggregates sports, concert, and theater ticket listings from over 60 ticketing sites, offering a seamless and comprehensive browsing experience.",
+    description:
+      "Ticket-Scalper is a ticket search platform that dynamically aggregates sports, concert, and theater ticket listings from over 60 ticketing sites, offering a seamless and comprehensive browsing experience.",
     image: Flicc,
     link: "https://mikegoat1.github.io/FliccPicker/",
     gitHub: "https://github.com/RandonRussell85/FliccPicker",
-    tags: ["Handlebars", "Sequelize", "CSS3", "Sequelize", "Javascript", "Express-session","DotEnv"],
+    tags: ["HTML5", "CSS3", "jQuery", "Ajax"],
   },
   {
     title: "Ticket Scalper",
-    description: "Ticket-Scalper is a ticket search platform that dynamically aggregates sports, concert, and theater ticket listings from over 60 ticketing sites, offering a seamless and comprehensive browsing experience.",
+    description:
+      "Ticket-Scalper is a ticket search platform that dynamically aggregates sports, concert, and theater ticket listings from over 60 ticketing sites, offering a seamless and comprehensive browsing experience.",
     image: Ticket,
     link: "https://maple-eh-00291.herokuapp.com",
     gitHub: "https://github.com/mikegoat1/Ticket-Scalper",
-    tags: ["Handlebars", "Sequelize", "CSS3", "Sequelize", "Javascript", "Express-session","DotEnv"],
+    tags: [
+      "Handlebars",
+      "Sequelize",
+      "CSS3",
+      "Sequelize",
+      "Javascript",
+      "Express-session",
+      "DotEnv",
+    ],
   },
   {
     title: "The Great Quiz",
@@ -76,6 +131,12 @@ const projects = [
 ];
 const Work = () => {
   const classes = useStyles();
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = (index) => {
+    setExpanded(expanded === index ? null : index);
+  };
+
   return (
     <Container
       maxWidth="md"
@@ -84,6 +145,8 @@ const Work = () => {
         flexDirection: "column",
         justifyContent: "center",
         minHeight: "100vh",
+        marginTop: "5rem",
+        marginBottom: "5rem",
       }}
     >
       <Typography
@@ -111,9 +174,9 @@ const Work = () => {
                 >
                   {project.title}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                {/* <Typography variant="body2" color="textSecondary" component="p">
                   {project.description}
-                </Typography>
+                </Typography> */}
                 <div>
                   {project.tags.map((tag, index) => (
                     <Chip
@@ -134,14 +197,35 @@ const Work = () => {
                 >
                   <GitHubIcon />
                 </IconButton>
-                <IconButton
-                  href={project.link}
-                  sx={{ color: "#E2725B" }}
-                  aria-label="Host Link"
+                {project.link ? (
+                  <IconButton
+                    href={project.link}
+                    sx={{ color: "#E2725B" }}
+                    aria-label="Host Link"
+                  >
+                    <WebIcon />
+                  </IconButton>
+                ) : null}
+                <ExpandMore
+                  expand={expanded === index}
+                  onClick={() => handleExpandClick(index)}
+                  aria-expanded={expanded === index}
+                  aria-label="show more"
                 >
-                  <WebIcon />
-                </IconButton>
+                  <ExpandMoreIcon />
+                </ExpandMore>
               </CardActions>
+              <Collapse in={expanded === index} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {project.description}
+                  </Typography>
+                </CardContent>
+              </Collapse>
             </Card>
           </Grid2>
         ))}
