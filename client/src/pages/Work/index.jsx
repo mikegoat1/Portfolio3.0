@@ -153,6 +153,7 @@ const Work = () => {
         variant="h4"
         sx={{ display: "flex", justifyContent: "center" }}
         gutterBottom
+        marginBottom="4rem"
       >
         Recent Work
       </Typography>
@@ -174,9 +175,6 @@ const Work = () => {
                 >
                   {project.title}
                 </Typography>
-                {/* <Typography variant="body2" color="textSecondary" component="p">
-                  {project.description}
-                </Typography> */}
                 <div>
                   {project.tags.map((tag, index) => (
                     <Chip
@@ -189,7 +187,7 @@ const Work = () => {
                   ))}
                 </div>
               </CardContent>
-              <CardActions>
+              <CardActions disableSpacing>
                 <IconButton
                   href={project.gitHub}
                   sx={{ color: "#E2725B" }}
@@ -207,12 +205,14 @@ const Work = () => {
                   </IconButton>
                 ) : null}
                 <ExpandMore
+                  alignItems="end"
                   expand={expanded === index}
                   onClick={() => handleExpandClick(index)}
                   aria-expanded={expanded === index}
                   aria-label="show more"
+                  sx={{ alignSelf: "flex-end" }}
                 >
-                  <ExpandMoreIcon />
+                  <ExpandMoreIcon  />
                 </ExpandMore>
               </CardActions>
               <Collapse in={expanded === index} timeout="auto" unmountOnExit>
