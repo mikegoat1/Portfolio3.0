@@ -125,6 +125,7 @@ const projects = [
     description:
       "A dynamic card component created using a blend of vanilla JavaScript, jQuery, HTML, and CSS, showcasing interactive content and styles for a responsive user experience.",
     image: Quiz,
+    link: "https://mikegoat1.github.io/The-Great-Quiz",
     gitHub: "https://github.com/mikegoat1/The-Great-Quiz",
     tags: ["Javascript", "jQuery", "HTML5", "CSS3"],
   },
