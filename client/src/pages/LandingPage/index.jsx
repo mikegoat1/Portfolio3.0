@@ -28,15 +28,15 @@ const LandingPage = () => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "auto",
           backgroundPosition: "right",
-          opacity: 0.6,
+          opacity: 0.8,
           zIndex: -1,
         },
       }}
     >
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom sx={{ color: 'white',}}>
       Full Stack Developer | Frontend & Backend Innovation.
       </Typography>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom sx={{ color: 'white',}}>
       Bringing Code and Creativity Together.
       </Typography>
       <Box sx={{ display: "flex", gap: "1rem", marginTop: "1rem", justifyContent: "center" }}>

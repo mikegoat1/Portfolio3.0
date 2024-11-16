@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/portfolio3.0/static/css/main.a09c4344.css",
-    "main.js": "/portfolio3.0/static/js/main.7eef0538.js",
-    "static/js/488.5382359f.chunk.js": "/portfolio3.0/static/js/488.5382359f.chunk.js",
-    "static/media/IMG_1411 2.jpg": "/portfolio3.0/static/media/IMG_1411 2.fec09c65e4e343a8a8f3.jpg",
-    "static/media/background.jpg": "/portfolio3.0/static/media/background.dc44be7dd4784700d89b.jpg",
-    "static/media/ticket-scalper.png": "/portfolio3.0/static/media/ticket-scalper.a3ea1db19319ab39d00b.png",
-    "static/media/backgrounds.jpg": "/portfolio3.0/static/media/backgrounds.93446448b0f853e547cd.jpg",
-    "static/media/Great-Quiz.png": "/portfolio3.0/static/media/Great-Quiz.41f8c63986d7f1a561cd.png",
-    "static/media/10-31-24 Resume Coding .pdf": "/portfolio3.0/static/media/10-31-24 Resume Coding .40fab6fbcc1234c91a7e.pdf",
-    "static/media/Green.jpg": "/portfolio3.0/static/media/Green.99ebae4ba197dc048895.jpg",
-    "static/media/FLICCPICKER.png": "/portfolio3.0/static/media/FLICCPICKER.224104d234c2484a15ed.png",
-    "static/media/Logo.png": "/portfolio3.0/static/media/Logo.4b8b670e62ca2b99127f.png",
-    "index.html": "/portfolio3.0/index.html",
-    "main.a09c4344.css.map": "/portfolio3.0/static/css/main.a09c4344.css.map",
-    "main.7eef0538.js.map": "/portfolio3.0/static/js/main.7eef0538.js.map",
-    "488.5382359f.chunk.js.map": "/portfolio3.0/static/js/488.5382359f.chunk.js.map"
+    "main.css": "/Portfolio3.0/static/css/main.a09c4344.css",
+    "main.js": "/Portfolio3.0/static/js/main.7a578b52.js",
+    "static/js/488.5382359f.chunk.js": "/Portfolio3.0/static/js/488.5382359f.chunk.js",
+    "static/media/IMG_1411 2.jpg": "/Portfolio3.0/static/media/IMG_1411 2.fec09c65e4e343a8a8f3.jpg",
+    "static/media/background.jpg": "/Portfolio3.0/static/media/background.dc44be7dd4784700d89b.jpg",
+    "static/media/ticket-scalper.png": "/Portfolio3.0/static/media/ticket-scalper.a3ea1db19319ab39d00b.png",
+    "static/media/backgrounds.jpg": "/Portfolio3.0/static/media/backgrounds.93446448b0f853e547cd.jpg",
+    "static/media/Great-Quiz.png": "/Portfolio3.0/static/media/Great-Quiz.41f8c63986d7f1a561cd.png",
+    "static/media/10-31-24 Resume Coding .pdf": "/Portfolio3.0/static/media/10-31-24 Resume Coding .40fab6fbcc1234c91a7e.pdf",
+    "static/media/Green.jpg": "/Portfolio3.0/static/media/Green.99ebae4ba197dc048895.jpg",
+    "static/media/FLICCPICKER.png": "/Portfolio3.0/static/media/FLICCPICKER.224104d234c2484a15ed.png",
+    "static/media/Logo.png": "/Portfolio3.0/static/media/Logo.4b8b670e62ca2b99127f.png",
+    "index.html": "/Portfolio3.0/index.html",
+    "main.a09c4344.css.map": "/Portfolio3.0/static/css/main.a09c4344.css.map",
+    "main.7a578b52.js.map": "/Portfolio3.0/static/js/main.7a578b52.js.map",
+    "488.5382359f.chunk.js.map": "/Portfolio3.0/static/js/488.5382359f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a09c4344.css",
-    "static/js/main.7eef0538.js"
+    "static/js/main.7a578b52.js"
   ]
 }
