@@ -100,7 +100,7 @@ const projects = [
       "Ticket-Scalper is a ticket search platform that dynamically aggregates sports, concert, and theater ticket listings from over 60 ticketing sites, offering a seamless and comprehensive browsing experience.",
     image: Flicc,
     link: "https://mikegoat1.github.io/FliccPicker/",
-    gitHub: "https://github.com/RandonRussell85/FliccPicker",
+    gitHub: "https://github.com/mikegoat1/FliccPicker",
     tags: ["HTML5", "CSS3", "jQuery", "Ajax"],
   },
   {
