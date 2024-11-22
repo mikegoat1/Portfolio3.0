@@ -18,9 +18,11 @@ import Quiz from "../../assets/Great-Quiz.png";
 import Ticket from "../../assets/ticket-scalper.png";
 import Flicc from "../../assets/FLICCPICKER.png";
 import Lemon from "../../assets/Logo.png";
+import GatherHub from "../../assets/Updated_GatherHub_Logo_Together_Here.png";
 import { styled } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import backgroundImage from "../../assets/background.jpg";
+
 
 // I want to create a landing page first, then have the user navigate to the about me page.
 
@@ -73,7 +75,7 @@ const projects = [
     title: "The Event",
     description:
       "The Event Management System is a platform for organizing and managing events, enabling users to create events, RSVP, and receive updates with features like real-time chat, event analytics, and a calendar with reminders. Built with Node.js, MongoDB, React, and deployed on Heroku, it offers secure authentication, seamless event creation, and an intuitive interface for managing attendees.",
-    image: "https://via.placeholder.com/140",
+    image: GatherHub,
     gitHub: "https://github.com/mikegoat1/The-Eventers",
     tags: [
       "HTML",
