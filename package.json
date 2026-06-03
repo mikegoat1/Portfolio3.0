@@ -4,7 +4,6 @@
   "scripts": {
     "dev": "npm start --prefix client",
     "build": "npm run build --prefix client",
-    "deploy": "npm run deploy --prefix client",
     "install:client": "npm install --prefix client"
   }
 }
