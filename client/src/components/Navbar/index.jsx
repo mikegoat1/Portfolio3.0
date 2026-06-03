@@ -3,17 +3,35 @@ import { AppBar, Box, Tabs, Tab, Typography, IconButton, Drawer, List, ListItem,
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineDownload } from 'react-icons/ai';
 import MenuIcon from '@mui/icons-material/Menu';
+import ThemeToggle from '../ThemeToggle';
 import Resume from "../../assets/10-31-24 Resume Coding .pdf";
 
 const styles = {
     navBar: {
         display: "flex",
         justifyContent: "space-between",
-        padding: "1%",
-        backgroundColor: "#E7E9EC",
-        color: "#3C3C3C",
+        padding: "0.5rem 1.5rem",
+        backgroundColor: "var(--surface)",
+        color: "var(--text)",
         alignItems: "center",
+        borderBottom: "1px solid var(--border)",
     },
+};
+
+// Terminal-prompt brand mark: green prompt glyph + mono name.
+const brandSx = {
+    fontFamily: "var(--font-mono)",
+    fontSize: "18px",
+    fontWeight: 600,
+    color: "var(--text)",
+    letterSpacing: "-0.01em",
+};
+
+const tabSx = {
+    fontFamily: "var(--font-ui)",
+    color: "var(--text-muted)",
+    '&:hover': { color: 'var(--accent)' },
+    '&.Mui-selected': { color: 'var(--accent)' },
 };
 
 const handleDownload = () => {
@@ -25,20 +43,27 @@ const handleDownload = () => {
     document.body.removeChild(link);
 };
 
+const Brand = () => (
+    <Typography component="span" sx={brandSx}>
+        <Box component="span" sx={{ color: 'var(--accent)' }}>~/</Box>
+        michael-l-johnson
+    </Typography>
+);
+
 const NavBar = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const location = useLocation();
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(false);
 
     useEffect(() => {
         if (location.pathname === '/about') {
             setValue(0);
-        }
-        if (location.pathname === '/work') {
+        } else if (location.pathname === '/work') {
             setValue(1);
-        }
-        if (location.pathname === '/resume') {
+        } else if (location.pathname === '/resume') {
             setValue(2);
+        } else {
+            setValue(false);
         }
     }, [location]);
 
@@ -47,46 +72,71 @@ const NavBar = () => {
     };
 
     return (
-        <AppBar position="static"
+        <AppBar position="static" elevation={0}
             sx={{
-                '--AppBar-background': "#E7E9EC",
-                '--AppBar-color': "#3C3C3C",
-                backgroundColor: 'var(--AppBar-background)',
-                color: 'var(--AppBar-color)',
+                backgroundColor: 'var(--surface)',
+                color: 'var(--text)',
+                backgroundImage: 'none',
             }}>
             <Box style={styles.navBar}>
-                <Typography variant="h1" sx={{ display: { xs: "none", sm: 'flex' } }} style={{ fontFamily: "Playfair Display", fontSize: "26px" }}>Michael L. Johnson</Typography>
-                <Tabs value={value} sx={{ display: { xs: "none", sm: 'flex' } }} onChange={(e, newValue) => setValue(newValue)} >
-                    <Tab label="About Me" component={Link} to="/about" sx={{ '&:hover': { color: '#6A7BA2' }, '&.Mui-selected': { color: '#6A7BA2' } }} />
-                    <Tab label="Work" component={Link} to="/work" sx={{ '&:hover': { color: '#6A7BA2' }, '&.Mui-selected': { color: '#6A7BA2' } }} />
-                    <Tab label="Resume" component={Link} to="/resume" sx={{ '&:hover': { color: '#6A7BA2' }, '&.Mui-selected': { color: '#6A7BA2' } }} />
-                    <Tab label={<AiOutlineDownload />} onClick={handleDownload} />
-                </Tabs>
+                <Box component={Link} to="/" sx={{ display: { xs: "none", sm: 'flex' }, textDecoration: 'none' }}>
+                    <Brand />
+                </Box>
+                <Box sx={{ display: { xs: "none", sm: 'flex' }, alignItems: 'center', gap: '0.5rem' }}>
+                    <Tabs
+                        value={value}
+                        onChange={(e, newValue) => setValue(newValue)}
+                        TabIndicatorProps={{ sx: { backgroundColor: 'var(--accent)' } }}
+                    >
+                        <Tab label="About" component={Link} to="/about" sx={tabSx} />
+                        <Tab label="Work" component={Link} to="/work" sx={tabSx} />
+                        <Tab label="Resume" component={Link} to="/resume" sx={tabSx} />
+                        <Tab label={<AiOutlineDownload aria-label="Download resume" />} onClick={handleDownload} sx={tabSx} />
+                    </Tabs>
+                    <ThemeToggle />
+                </Box>
             </Box>
-            <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="end"
-                onClick={handleDrawerToggle}
-                sx={{ backgroundColor: '#E7E9EC', display: { xs: 'flex', sm: 'none', justifyContent: 'space-between' } }}
+            <Box
+                sx={{
+                    display: { xs: 'flex', sm: 'none' },
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    backgroundColor: 'var(--surface)',
+                    padding: '0.5rem 1rem',
+                    borderBottom: '1px solid var(--border)',
+                }}
             >
-                <Typography variant="h1" style={{ fontFamily: "Playfair Display", fontSize: "26px" }}>Michael L. Johnson</Typography>
-                <MenuIcon />
-            </IconButton>
+                <Box component={Link} to="/" sx={{ textDecoration: 'none' }}>
+                    <Brand />
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <ThemeToggle />
+                    <IconButton
+                        color="inherit"
+                        aria-label="open navigation menu"
+                        edge="end"
+                        onClick={handleDrawerToggle}
+                        sx={{ color: 'var(--text)' }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                </Box>
+            </Box>
             <Drawer
                 anchor="left"
                 open={drawerOpen}
                 onClose={handleDrawerToggle}
+                PaperProps={{ sx: { backgroundColor: 'var(--surface)', color: 'var(--text)' } }}
             >
                 <List>
                     <ListItem button component={Link} to="/about" onClick={handleDrawerToggle}>
-                        <ListItemText primary="About Me" sx={{ color: '#3C3C3C' }} />
+                        <ListItemText primary="About" sx={{ color: 'var(--text)' }} />
                     </ListItem>
                     <ListItem button component={Link} to="/work" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Work" sx={{ color: '#3C3C3C' }} />
+                        <ListItemText primary="Work" sx={{ color: 'var(--text)' }} />
                     </ListItem>
                     <ListItem button onClick={handleDownload}>
-                        <ListItemText primary="View Resume" sx={{ color: '#3C3C3C' }} />
+                        <ListItemText primary="View Resume" sx={{ color: 'var(--text)' }} />
                     </ListItem>
                 </List>
             </Drawer>

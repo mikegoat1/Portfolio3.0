@@ -4,6 +4,7 @@ import './index.css';
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
+import { ThemeProvider } from './theme';
 import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root');
@@ -11,7 +12,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <BrowserRouter basename='/Portfolio3.0'>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );
