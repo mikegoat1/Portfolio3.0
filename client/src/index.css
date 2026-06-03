@@ -85,6 +85,42 @@ code, pre {
   font-family: var(--font-mono);
 }
 
+/* ---- Hero typed-prompt reveal (Direction A) ----
+   Runs once on load. Only enabled when motion is welcome; otherwise the
+   text renders as its static final state (no animation applied at all). */
+@media (prefers-reduced-motion: no-preference) {
+  .type-line {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: type-in 900ms steps(24, end) 150ms forwards;
+  }
+
+  /* second line starts after the first finishes */
+  .type-line--delayed {
+    animation-delay: 1100ms;
+    animation-duration: 1100ms;
+  }
+
+  /* blinking caret on the prompt while/after typing */
+  .type-caret::after {
+    content: "▋";
+    margin-left: 2px;
+    color: var(--accent);
+    animation: caret-blink 1s steps(1) infinite;
+  }
+
+  @keyframes type-in {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes caret-blink {
+    50% { opacity: 0; }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

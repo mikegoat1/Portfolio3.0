@@ -53,7 +53,11 @@ const LandingPage = () => {
           }}
         >
           <Box component="span">$</Box>
-          <Box component="span" sx={{ color: "var(--text-muted)" }}>
+          <Box
+            component="span"
+            className="type-line type-caret"
+            sx={{ color: "var(--text-muted)" }}
+          >
             whoami
           </Box>
         </Box>
@@ -69,7 +73,9 @@ const LandingPage = () => {
             mb: 2,
           }}
         >
-          Full Stack Developer
+          <Box component="span" className="type-line type-line--delayed">
+            Full Stack Developer
+          </Box>
         </Typography>
 
         <Typography

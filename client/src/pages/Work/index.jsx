@@ -1,9 +1,9 @@
 import {
+  Box,
   Card,
   CardActions,
   CardContent,
   CardMedia,
-  Chip,
   Collapse,
   Container,
   Grid2,
@@ -15,54 +15,55 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import WebIcon from "@mui/icons-material/Web";
 import { styled } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import backgroundImage from "../../assets/background.jpg";
 import { projects } from "../../data/projects";
 import PageBackground from "../../components/PageBackground";
 
+// Derive an editor-style filename from a project title, e.g.
+// "The Event" -> "the-event.tsx". Pure, data-driven (no hardcoding).
+const toFileName = (title) =>
+  `${title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")}.tsx`;
 
-// I want to create a landing page first, then have the user navigate to the about me page.
-
+// Card reads as a code-editor panel: --surface "tab strip" + body, lifted
+// off --bg by --border (no drop shadow on dark — elevation via tint/border).
 const cardSx = {
-  maxWidth: 345,
-  backgroundColor: "#F4F4F4",
-  boxShadow: "0 4px 8px rgba(138, 143, 153, 0.2)",
-  border: "1px solid #8A8F99",
+  backgroundColor: "var(--surface)",
+  border: "1px solid var(--border)",
+  borderRadius: "var(--radius-md)",
+  boxShadow: "none",
+  overflow: "hidden",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  transition: "border-color var(--dur-fast) var(--ease)",
+  "&:hover": { borderColor: "var(--accent)" },
 };
-const mediaSx = {
-  height: 140,
-};
-const chipSx = {
-  backgroundColor: "#A8BCA1",
-  color: "#3C3C3C",
-  marginRight: "4px",
-  marginBottom: "4px",
-};
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
 })(({ theme }) => ({
   marginLeft: "auto",
+  color: "var(--text-muted)",
   transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
   variants: [
     {
       props: ({ expand }) => !expand,
-      style: {
-        transform: "rotate(0deg)",
-      },
+      style: { transform: "rotate(0deg)" },
     },
     {
       props: ({ expand }) => !!expand,
-      style: {
-        transform: "rotate(180deg)",
-      },
+      style: { transform: "rotate(180deg)" },
     },
   ],
 }));
 
 const Work = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(null);
 
   const handleExpandClick = (index) => {
     setExpanded(expanded === index ? null : index);
@@ -80,79 +81,180 @@ const Work = () => {
         marginBottom: "5rem",
       }}
     >
-      <PageBackground image={backgroundImage} opacity={0.3} backgroundSize="cover" />
-      <Typography
-        variant="h4"
-        sx={{ display: "flex", justifyContent: "center" }}
-        gutterBottom
-        marginBottom="4rem"
-      >
-        Recent Work
-      </Typography>
-      <Grid2 container spacing={4} justifyContent="center" alignItems="center">
+      <PageBackground variant="grid" />
+
+      {/* Section header as a terminal prompt */}
+      <Box sx={{ textAlign: "center", mb: "4rem" }}>
+        <Box
+          component="span"
+          sx={{
+            fontFamily: "var(--font-mono)",
+            color: "var(--text-muted)",
+            fontSize: "0.9rem",
+            display: "block",
+            mb: 1,
+          }}
+        >
+          <Box component="span" sx={{ color: "var(--accent)" }}>
+            $
+          </Box>{" "}
+          ls ~/projects
+        </Box>
+        <Typography
+          variant="h4"
+          sx={{ fontFamily: "var(--font-ui)", color: "var(--text)" }}
+        >
+          Recent Work
+        </Typography>
+      </Box>
+
+      <Grid2 container spacing={4} justifyContent="center" alignItems="stretch">
         {projects.map((project, index) => (
           <Grid2 item size={{ md: 4, sm: 6, xs: 12 }} key={index}>
             <Card sx={cardSx}>
+              {/* File-tab header */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  px: "var(--space-3)",
+                  py: "var(--space-2)",
+                  borderBottom: "1px solid var(--border)",
+                  backgroundColor: "var(--bg)",
+                }}
+              >
+                {/* traffic-light dots, drawn from tokens */}
+                <Box sx={{ display: "flex", gap: "6px" }} aria-hidden="true">
+                  {["var(--accent)", "var(--accent-2)", "var(--text-muted)"].map(
+                    (c, i) => (
+                      <Box
+                        key={i}
+                        sx={{
+                          width: 10,
+                          height: 10,
+                          borderRadius: "50%",
+                          backgroundColor: c,
+                          opacity: 0.85,
+                        }}
+                      />
+                    )
+                  )}
+                </Box>
+                <Box
+                  component="span"
+                  sx={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.8rem",
+                    color: "var(--text-muted)",
+                    ml: "0.25rem",
+                  }}
+                >
+                  {toFileName(project.title)}
+                </Box>
+              </Box>
+
               <CardMedia
-                sx={mediaSx}
+                sx={{ height: 140 }}
                 image={project.image}
                 title={project.title}
               />
-              <CardContent>
+
+              <CardContent sx={{ flexGrow: 1 }}>
                 <Typography
                   gutterBottom
-                  variant="h5"
+                  variant="h6"
                   component="div"
-                  sx={{ color: "#3C3C3C", fontWeight: "bold" }}
+                  sx={{
+                    fontFamily: "var(--font-ui)",
+                    color: "var(--text)",
+                    fontWeight: 700,
+                  }}
                 >
                   {project.title}
                 </Typography>
-                <div>
-                  {project.tags.map((tag, index) => (
-                    <Chip
-                      key={index}
-                      label={tag}
-                      size="small"
-                      sx={chipSx}
-                    />
+
+                {/* Tags as a mono import statement */}
+                <Box
+                  sx={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "0.72rem",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  <Box component="span" sx={{ color: "var(--accent-2)" }}>
+                    import
+                  </Box>{" "}
+                  <Box component="span" sx={{ color: "var(--text)" }}>
+                    {"{ "}
+                  </Box>
+                  {project.tags.map((tag, i) => (
+                    <React.Fragment key={i}>
+                      <Box component="span" sx={{ color: "var(--accent)" }}>
+                        {tag}
+                      </Box>
+                      {i < project.tags.length - 1 ? (
+                        <Box component="span" sx={{ color: "var(--text-muted)" }}>
+                          ,{" "}
+                        </Box>
+                      ) : null}
+                    </React.Fragment>
                   ))}
-                </div>
+                  <Box component="span" sx={{ color: "var(--text)" }}>
+                    {" }"}
+                  </Box>
+                </Box>
               </CardContent>
-              <CardActions disableSpacing>
+
+              {/* Editor toolbar: external links + expand */}
+              <CardActions
+                disableSpacing
+                sx={{ borderTop: "1px solid var(--border)" }}
+              >
                 <IconButton
                   href={project.gitHub}
-                  sx={{ color: "#E2725B" }}
-                  aria-label="GitHub Link"
+                  sx={{ color: "var(--text-muted)", "&:hover": { color: "var(--accent)" } }}
+                  aria-label={`GitHub repository for ${project.title}`}
                 >
                   <GitHubIcon />
                 </IconButton>
                 {project.link ? (
                   <IconButton
                     href={project.link}
-                    sx={{ color: "#E2725B" }}
-                    aria-label="Host Link"
+                    sx={{ color: "var(--text-muted)", "&:hover": { color: "var(--accent)" } }}
+                    aria-label={`Live site for ${project.title}`}
                   >
                     <WebIcon />
                   </IconButton>
                 ) : null}
                 <ExpandMore
-                  alignItems="end"
                   expand={expanded === index}
                   onClick={() => handleExpandClick(index)}
                   aria-expanded={expanded === index}
-                  aria-label="show more"
-                  sx={{ alignSelf: "flex-end" }}
+                  aria-label={
+                    expanded === index
+                      ? `Hide details for ${project.title}`
+                      : `Show details for ${project.title}`
+                  }
                 >
                   <ExpandMoreIcon />
                 </ExpandMore>
               </CardActions>
+
               <Collapse in={expanded === index} timeout="auto" unmountOnExit>
-                <CardContent>
+                <CardContent sx={{ borderTop: "1px solid var(--border)" }}>
                   <Typography
                     variant="body2"
-                    color="textSecondary"
                     component="p"
+                    sx={{ color: "var(--text-muted)", fontFamily: "var(--font-ui)" }}
                   >
+                    {/* leading comment marker to keep the editor metaphor */}
+                    <Box
+                      component="span"
+                      sx={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
+                    >
+                      {"// "}
+                    </Box>
                     {project.description}
                   </Typography>
                 </CardContent>
