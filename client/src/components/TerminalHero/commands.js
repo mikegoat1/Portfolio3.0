@@ -94,11 +94,11 @@ const commands = {
         ["02", "little-lemon.tsx", "React"],
         ["03", "flick-picker.tsx", "HTML · CSS · jQuery"],
         ["04", "ticket-scalper.tsx", "Express · Sequelize"],
-        ["05", "the-great-quiz.tsx", "JS · jQuery"],
+        ["05", "serverless-task-tracker.tsx", "AWS · Lambda · DynamoDB"],
       ].map(([idx, file, tags]) => ({
         segments: [
           { text: `${idx}  `, color: C.muted },
-          { text: file.padEnd(20, " "), color: C.accent },
+          { text: file.padEnd(30, " "), color: C.accent },
           { text: tags, color: C.muted },
         ],
       })),

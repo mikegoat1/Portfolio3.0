@@ -1,8 +1,8 @@
-import Quiz from "../assets/Great-Quiz.png";
 import Ticket from "../assets/ticket-scalper.png";
 import Flicc from "../assets/FLICCPICKER.png";
 import Lemon from "../assets/Logo.png";
 import GatherHub from "../assets/Updated_GatherHub_Logo_Together_Here.png";
+import ServerlessTaskTracker from "../assets/serverless-task-tracker.png";
 
 export const projects = [
   {
@@ -57,12 +57,20 @@ export const projects = [
     ],
   },
   {
-    title: "The Great Quiz",
+    title: "Serverless Task Tracker",
     description:
-      "A dynamic card component created using a blend of vanilla JavaScript, jQuery, HTML, and CSS, showcasing interactive content and styles for a responsive user experience.",
-    image: Quiz,
-    link: "https://mikegoat1.github.io/The-Great-Quiz",
-    gitHub: "https://github.com/mikegoat1/The-Great-Quiz",
-    tags: ["Javascript", "jQuery", "HTML5", "CSS3"],
+      "Serverless Task Tracker is a CRUD task management app built on AWS Lambda, API Gateway, DynamoDB, and S3, with CloudWatch monitoring. The static frontend lets users create, view, update, and delete tasks while the backend runs without server management.",
+    image: ServerlessTaskTracker,
+    link: "https://task-tracker-ui-michaeljohnson.s3.us-east-1.amazonaws.com/index.html",
+    gitHub: "https://github.com/mikegoat1/Severless_Task_Tracker",
+    tags: [
+      "AWS Lambda",
+      "API Gateway",
+      "DynamoDB",
+      "S3",
+      "CloudWatch",
+      "Python",
+      "JavaScript",
+    ],
   },
 ];
