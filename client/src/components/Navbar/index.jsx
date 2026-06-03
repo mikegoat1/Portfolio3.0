@@ -37,9 +37,6 @@ const NavBar = () => {
         if (location.pathname === '/work') {
             setValue(1);
         }
-        // if (location.pathname === '/contact') {
-        //     setValue(2);
-        // }
         if (location.pathname === '/resume') {
             setValue(2);
         }
@@ -62,7 +59,6 @@ const NavBar = () => {
                 <Tabs value={value} sx={{ display: { xs: "none", sm: 'flex' } }} onChange={(e, newValue) => setValue(newValue)} >
                     <Tab label="About Me" component={Link} to="/about" sx={{ '&:hover': { color: '#6A7BA2' }, '&.Mui-selected': { color: '#6A7BA2' } }} />
                     <Tab label="Work" component={Link} to="/work" sx={{ '&:hover': { color: '#6A7BA2' }, '&.Mui-selected': { color: '#6A7BA2' } }} />
-                    {/* <Tab label="Contact Me" component={Link} to="/contact" sx={{ '&:hover': { color: '#6A7BA2' }, '&.Mui-selected': { color: '#6A7BA2' } }} /> */}
                     <Tab label="Resume" component={Link} to="/resume" sx={{ '&:hover': { color: '#6A7BA2' }, '&.Mui-selected': { color: '#6A7BA2' } }} />
                     <Tab label={<AiOutlineDownload />} onClick={handleDownload} />
                 </Tabs>
@@ -89,9 +85,6 @@ const NavBar = () => {
                     <ListItem button component={Link} to="/work" onClick={handleDrawerToggle}>
                         <ListItemText primary="Work" sx={{ color: '#3C3C3C' }} />
                     </ListItem>
-                    {/* <ListItem button component={Link} to="/contact" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Contact Me" sx={{ color: '#3C3C3C' }} />
-                    </ListItem> */}
                     <ListItem button onClick={handleDownload}>
                         <ListItemText primary="View Resume" sx={{ color: '#3C3C3C' }} />
                     </ListItem>

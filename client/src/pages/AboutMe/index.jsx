@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Typography, Avatar } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import backgroundImage from "../../assets/Green.jpg";
+import PageBackground from "../../components/PageBackground";
 
 
 const Home = () => {
@@ -15,21 +16,14 @@ const Home = () => {
           flexDirection: "column",
           justifyContent: "center",
           minHeight: "100vh",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "right",
-            opacity: 0.15,
-            zIndex: -1,
-          },
         }}
       >
+        <PageBackground
+          image={backgroundImage}
+          opacity={0.15}
+          backgroundSize="cover"
+          backgroundPosition="right"
+        />
         <Grid container spacing={6} alignItems="center">
           {/* Left Side: Image */}
           <Grid size={{ md: 4, sm: 5, xs: 12 }} item>

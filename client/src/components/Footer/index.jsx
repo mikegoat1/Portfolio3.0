@@ -4,6 +4,7 @@ import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
+import { LINKEDIN_URL, GITHUB_URL, EMAIL_HREF } from "../../config/site";
 
 const Footer = () => {
   const [value, setValue] = React.useState(0);
@@ -39,7 +40,7 @@ const Footer = () => {
             label="LinkedIn"
             icon={<LinkedInIcon />}
             component="a"
-            href="https://www.linkedin.com/in/michael-johnson-8b752790/"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
           />
@@ -47,7 +48,7 @@ const Footer = () => {
             label="GitHub"
             icon={<GitHubIcon />}
             component="a"
-            href="https://github.com/mikegoat1?tab=repositories"
+            href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
           />
@@ -55,7 +56,7 @@ const Footer = () => {
             label="Email"
             icon={<EmailIcon />}
             component="a"
-            href="mailto:mikeg.o.a.t.1@gmail.com"
+            href={EMAIL_HREF}
             target="_blank"
             rel="noopener noreferrer"
           />

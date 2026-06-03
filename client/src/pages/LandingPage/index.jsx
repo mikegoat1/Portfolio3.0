@@ -2,10 +2,12 @@ import React from "react";
 import { Container, Typography, Button, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../assets/backgrounds.jpg";
+import PageBackground from "../../components/PageBackground";
+import { EMAIL_HREF } from "../../config/site";
 
 const LandingPage = () => {
   const handleEmailClick = () => {
-    window.location.href = "mailto:mikeg.o.a.t.1@gmail.com";
+    window.location.href = EMAIL_HREF;
   };
 
   return (
@@ -18,21 +20,14 @@ const LandingPage = () => {
         flexDirection: "column",
         justifyContent: "center",
         minHeight: "100vh",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "auto",
-          backgroundPosition: "right",
-          opacity: 0.8,
-          zIndex: -1,
-        },
       }}
     >
+      <PageBackground
+        image={backgroundImage}
+        opacity={0.8}
+        backgroundSize="auto"
+        backgroundPosition="right"
+      />
       <Typography variant="h4" gutterBottom sx={{ color: 'white',}}>
       Full Stack Developer | Frontend & Backend Innovation.
       </Typography>

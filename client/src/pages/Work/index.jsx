@@ -13,14 +13,11 @@ import {
 import React, { useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import WebIcon from "@mui/icons-material/Web";
-import Quiz from "../../assets/Great-Quiz.png";
-import Ticket from "../../assets/ticket-scalper.png";
-import Flicc from "../../assets/FLICCPICKER.png";
-import Lemon from "../../assets/Logo.png";
-import GatherHub from "../../assets/Updated_GatherHub_Logo_Together_Here.png";
 import { styled } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import backgroundImage from "../../assets/background.jpg";
+import { projects } from "../../data/projects";
+import PageBackground from "../../components/PageBackground";
 
 
 // I want to create a landing page first, then have the user navigate to the about me page.
@@ -64,68 +61,6 @@ const ExpandMore = styled((props) => {
   ],
 }));
 
-const projects = [
-  {
-    title: "The Event",
-    description:
-      "The Event Management System is a platform for organizing and managing events, enabling users to create events, RSVP, and receive updates with features like real-time chat, event analytics, and a calendar with reminders. Built with Node.js, MongoDB, React, and deployed on Heroku, it offers secure authentication, seamless event creation, and an intuitive interface for managing attendees.",
-    image: GatherHub,
-    gitHub: "https://github.com/mikegoat1/The-Eventers",
-    tags: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "Node.js",
-      "MongoDB",
-      "JWT",
-      "Next.js",
-    ],
-  },
-  {
-    title: "Little Lemon",
-    description:
-      "Little Lemon is a React-based website for a fictional restaurant, featuring a user-friendly interface to explore the menu, learn about the restaurant, and make table reservations seamlessly",
-    image: Lemon,
-    gitHub: "https://github.com/mikegoat1/Little-Lemon",
-    tags: ["React", "HTML", "CSS", "JavaScript"],
-  },
-  {
-    title: "Flick Picker",
-    description:
-      "Ticket-Scalper is a ticket search platform that dynamically aggregates sports, concert, and theater ticket listings from over 60 ticketing sites, offering a seamless and comprehensive browsing experience.",
-    image: Flicc,
-    link: "https://mikegoat1.github.io/FliccPicker/",
-    gitHub: "https://github.com/mikegoat1/FliccPicker",
-    tags: ["HTML5", "CSS3", "jQuery", "Ajax"],
-  },
-  {
-    title: "Ticket Scalper",
-    description:
-      "Ticket-Scalper is a ticket search platform that dynamically aggregates sports, concert, and theater ticket listings from over 60 ticketing sites, offering a seamless and comprehensive browsing experience.",
-    image: Ticket,
-    link: "https://maple-eh-00291.herokuapp.com",
-    gitHub: "https://github.com/mikegoat1/Ticket-Scalper",
-    tags: [
-      "Handlebars",
-      "Sequelize",
-      "CSS3",
-      "Sequelize",
-      "Javascript",
-      "Express-session",
-      "DotEnv",
-    ],
-  },
-  {
-    title: "The Great Quiz",
-    description:
-      "A dynamic card component created using a blend of vanilla JavaScript, jQuery, HTML, and CSS, showcasing interactive content and styles for a responsive user experience.",
-    image: Quiz,
-    link: "https://mikegoat1.github.io/The-Great-Quiz",
-    gitHub: "https://github.com/mikegoat1/The-Great-Quiz",
-    tags: ["Javascript", "jQuery", "HTML5", "CSS3"],
-  },
-];
 const Work = () => {
   const [expanded, setExpanded] = useState(false);
 
@@ -143,20 +78,9 @@ const Work = () => {
         minHeight: "100vh",
         marginTop: "5rem",
         marginBottom: "5rem",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "cover",
-          opacity: 0.3,
-          zIndex: -1,
-        },
       }}
     >
+      <PageBackground image={backgroundImage} opacity={0.3} backgroundSize="cover" />
       <Typography
         variant="h4"
         sx={{ display: "flex", justifyContent: "center" }}
