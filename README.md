@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Portfolio 3.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Michael Johnson's personal portfolio — a terminal-themed React SPA deployed on GitHub Pages.
+
+## Tech Stack
+
+| Layer | Libraries / Tools |
+|---|---|
+| UI framework | React 18, MUI v6 (Material UI) |
+| Routing | React Router v6 |
+| SEO / meta | react-helmet-async |
+| Styling | MUI `sx` prop, CSS custom properties |
+| PDF viewer | @react-pdf-viewer/core |
+| Forms | Formspree (unauthenticated POST) |
+| CI/CD | GitHub Actions → GitHub Pages |
+
+## Pages and Routes
+
+| Route | Component | Description |
+|---|---|---|
+| `/` | `LandingPage` | Terminal hero section with interactive CLI |
+| `/about` | `AboutMe` | Bio and background |
+| `/work` | `Work` | Project showcase with live GitHub activity panel |
+| `/contact` | `Contact` | Terminal-styled contact form |
+| `/resume` | `Resume` | Inline PDF resume viewer |
+
+## Features
+
+### Terminal Hero (`client/src/components/TerminalHero/`)
+
+An interactive mini-CLI on the landing page. Available commands:
+
+| Command | Effect |
+|---|---|
+| `help` | Lists all commands |
+| `whoami` | Prints name and title |
+| `about` | Summary + navigates to `/about` |
+| `projects` | Lists recent work + navigates to `/work` |
+| `contact` | Prints contact links + navigates to `/contact` |
+| `clear` | Clears terminal history |
+
+Supports Tab autocomplete, arrow-key command history, and respects `prefers-reduced-motion`.
+
+### GitHub Activity Panel (`client/src/components/GitHubActivity/`)
+
+Displays the six most recently updated public repos for the GitHub username configured in `client/src/config/site.js`. Data is fetched from the unauthenticated GitHub REST API (rate limit: 60 requests/hr per IP). Responses are cached in `sessionStorage` under the key `gh_repos` to avoid redundant requests within a browser session.
+
+### Contact Form (`client/src/components/ContactForm/`)
+
+Terminal-styled form backed by Formspree. Submits `name`, `email`, and `message` fields as JSON. Includes inline validation, a submitting state, and retry/quit actions on network error.
+
+### SEO + Open Graph (`client/src/components/Seo/`)
+
+Reusable `<Seo>` component wrapping `react-helmet-async`. Every page sets `<title>`, `meta description`, canonical URL, and Open Graph / Twitter card tags. Configuration lives in `client/src/config/site.js`.
+
+## Setup
+
+### Prerequisites
+
+- Node.js 18+
+- npm 9+
+
+### Install
+
+```bash
+cd client
+npm install
+```
+
+### Environment / configuration
+
+All site-wide values are in **`client/src/config/site.js`** — no `.env` file is required. Edit that file directly:
+
+```js
+// Formspree — create a form at https://formspree.io, then paste the form ID here.
+export const FORMSPREE_ID = "YOUR_FORMSPREE_ID";   // e.g. "xayzwabc"
+
+// GitHub username — controls the activity panel on the Work page.
+export const GITHUB_USERNAME = "mikegoat1";
+
+// Deployed URL — used for canonical links and OG meta.
+export const SITE_URL = "https://mikegoat1.github.io/Portfolio3.0";
+```
+
+### OG image
+
+The Open Graph image must be placed at **`client/public/og-image.png`** (1200 × 630 px recommended). The `OG_IMAGE` constant in `site.js` resolves to `<SITE_URL>/og-image.png` automatically. The file is not committed to the repo; add it before building for production.
 
 ## Available Scripts
 
-In the project directory, you can run:
+Run all scripts from the `client/` directory.
 
-### `npm start`
+| Script | Command | Description |
+|---|---|---|
+| Start dev server | `npm start` | Runs on [http://localhost:3000](http://localhost:3000) with hot reload |
+| Run tests | `npm test` | Jest + React Testing Library in watch mode |
+| Production build | `npm run build` | Outputs to `client/build/` |
+| Eject CRA config | `npm run eject` | One-way operation — exposes webpack/Babel config |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Deployment
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The site deploys automatically to GitHub Pages via the workflow at `.github/workflows/`. Pushes to `main` trigger a build and deploy. The `homepage` field in `client/package.json` is set to `https://mikegoat1.github.io/Portfolio3.0`.

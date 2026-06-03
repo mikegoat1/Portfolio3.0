@@ -1,0 +1,47 @@
+/* TerminalHero — scoped keyframes only. Kept out of index.css to avoid
+   global pollution. All motion gated behind prefers-reduced-motion. */
+
+.terminal-caret {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1em;
+  background-color: var(--accent);
+  opacity: 1;
+  vertical-align: text-bottom;
+  margin-left: 1px;
+}
+
+/* The native input is invisible: we draw the caret ourselves. */
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  caret-color: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.terminal-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .terminal-caret {
+    animation: terminal-cursor-blink var(--dur-cursor-blink, 1000ms) steps(1) infinite;
+  }
+
+  @keyframes terminal-cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-caret { animation: none; opacity: 1; }
+}

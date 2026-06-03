@@ -7,6 +7,7 @@ import './App.css';
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LandingPage from "./pages/LandingPage";
+import Contact from "./pages/Contact";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<><NavBar /><LandingPage /><Footer /></>} />
         <Route path="/about" element={<><NavBar /><Home /><Footer /></>} />
         <Route path="/work" element={<><NavBar /><Work /><Footer /></>} />
+        <Route path="/contact" element={<><NavBar /><Contact /><Footer /></>} />
         <Route path="/resume" element={<><NavBar /><Resume /><Footer /></>} />
       </Routes>
 

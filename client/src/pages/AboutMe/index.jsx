@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Typography, Avatar, Box, Chip, Stack } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import PageBackground from "../../components/PageBackground";
+import Seo from "../../components/Seo";
 
 // Mono label rendered as a section "comment" header, e.g. "// about"
 const SectionLabel = ({ children }) => (
@@ -41,6 +42,12 @@ const Home = () => {
       }}
     >
       <PageBackground variant="grid" />
+
+      <Seo
+        title="About"
+        description="About Michael Johnson — full stack developer in Los Angeles with 5+ years building UI/UX and full-stack solutions for Apple and 2U."
+        path="/about"
+      />
 
       <Grid container spacing={6} alignItems="center">
         {/* Left Side: Image (asymmetric 4/8 split kept per audit) */}

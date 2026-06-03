@@ -56,15 +56,9 @@ const NavBar = () => {
     const [value, setValue] = useState(false);
 
     useEffect(() => {
-        if (location.pathname === '/about') {
-            setValue(0);
-        } else if (location.pathname === '/work') {
-            setValue(1);
-        } else if (location.pathname === '/resume') {
-            setValue(2);
-        } else {
-            setValue(false);
-        }
+        const map = { '/about': 0, '/work': 1, '/contact': 2, '/resume': 3 };
+        const next = map[location.pathname];
+        setValue(next === undefined ? false : next);
     }, [location]);
 
     const handleDrawerToggle = () => {
@@ -90,8 +84,9 @@ const NavBar = () => {
                     >
                         <Tab label="About" component={Link} to="/about" sx={tabSx} />
                         <Tab label="Work" component={Link} to="/work" sx={tabSx} />
+                        <Tab label="Contact" component={Link} to="/contact" sx={tabSx} />
                         <Tab label="Resume" component={Link} to="/resume" sx={tabSx} />
-                        <Tab label={<AiOutlineDownload aria-label="Download resume" />} onClick={handleDownload} sx={tabSx} />
+                        <Tab value="download" label={<AiOutlineDownload aria-label="Download resume" />} onClick={handleDownload} sx={tabSx} />
                     </Tabs>
                     <ThemeToggle />
                 </Box>
@@ -134,6 +129,9 @@ const NavBar = () => {
                     </ListItem>
                     <ListItem button component={Link} to="/work" onClick={handleDrawerToggle}>
                         <ListItemText primary="Work" sx={{ color: 'var(--text)' }} />
+                    </ListItem>
+                    <ListItem button component={Link} to="/contact" onClick={handleDrawerToggle}>
+                        <ListItemText primary="Contact" sx={{ color: 'var(--text)' }} />
                     </ListItem>
                     <ListItem button onClick={handleDownload}>
                         <ListItemText primary="View Resume" sx={{ color: 'var(--text)' }} />

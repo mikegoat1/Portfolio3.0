@@ -21,6 +21,36 @@
   --scrim: rgba(13, 17, 23, 0.82); /* hero text backdrop over photo */
   --shadow: 0 8px 24px rgba(1, 4, 9, 0.6);
 
+  /* ---- Terminal feature tokens (additive) ---- */
+  /* All contrast ratios computed; see tokens.js for notes. */
+  --terminal-chrome:     #010409;
+  --terminal-dot-close:  #ff5f57;   /* decorative, aria-hidden */
+  --terminal-dot-min:    #febc2e;   /* decorative, aria-hidden */
+  --terminal-dot-max:    #28c840;   /* decorative, aria-hidden */
+  --terminal-error:      #f85149;   /* 5.65:1 on --bg — AA */
+  --terminal-warning:    #d29922;   /* 7.50:1 on --bg — AA */
+  --terminal-focus-ring: #3fb950;   /* = --accent — 6.81:1 on --surface */
+  --terminal-shadow:     0 16px 48px rgba(1, 4, 9, 0.8),
+                         0 1px 0 rgba(63, 185, 80, 0.08);
+
+  /* ---- Skeleton tokens ---- */
+  --skeleton-base:    #1c2128;
+  --skeleton-shimmer: #21262d;
+
+  /* ---- Language badge dot colors (decorative, no contrast req) ---- */
+  /* Source: GitHub Linguist languages.yml */
+  --lang-javascript:  #f7df1e;
+  --lang-typescript:  #3178c6;
+  --lang-python:      #3572A5;
+  --lang-css:         #563d7c;
+  --lang-html:        #e34c26;
+  --lang-shell:       #89e051;
+  --lang-go:          #00ADD8;
+  --lang-rust:        #dea584;
+  --lang-java:        #b07219;
+  --lang-ruby:        #701516;
+  --lang-default:     #8b949e;
+
   color-scheme: dark;
 }
 
@@ -39,6 +69,33 @@
   --on-accent: #ffffff;   /* white on green button — 5.08:1 */
   --scrim: rgba(255, 255, 255, 0.85);
   --shadow: 0 8px 24px rgba(31, 35, 40, 0.12);
+
+  /* ---- Terminal feature tokens (additive) ---- */
+  --terminal-chrome:     #f6f8fa;   /* surface in light — no deep black */
+  --terminal-dot-close:  #ff5f57;   /* decorative, aria-hidden */
+  --terminal-dot-min:    #febc2e;   /* decorative, aria-hidden */
+  --terminal-dot-max:    #28c840;   /* decorative, aria-hidden */
+  --terminal-error:      #cf222e;   /* 5.36:1 on --bg — AA */
+  --terminal-warning:    #9a6700;   /* 4.87:1 on --bg — AA */
+  --terminal-focus-ring: #0969da;   /* = --accent-2 — 4.88:1 on --surface */
+  --terminal-shadow:     0 8px 24px rgba(31, 35, 40, 0.12);
+
+  /* ---- Skeleton tokens ---- */
+  --skeleton-base:    #eaeef2;
+  --skeleton-shimmer: #d0d7de;
+
+  /* ---- Language badge dot colors (same hex as dark — decorative only) ---- */
+  --lang-javascript:  #f7df1e;
+  --lang-typescript:  #3178c6;
+  --lang-python:      #3572A5;
+  --lang-css:         #563d7c;
+  --lang-html:        #e34c26;
+  --lang-shell:       #89e051;
+  --lang-go:          #00ADD8;
+  --lang-rust:        #dea584;
+  --lang-java:        #b07219;
+  --lang-ruby:        #701516;
+  --lang-default:     #59636e;
 
   color-scheme: light;
 }
@@ -64,6 +121,12 @@
   --ease: cubic-bezier(0.2, 0, 0, 1);
   --dur-fast: 150ms;
   --dur: 240ms;
+
+  /* Motion — terminal feature additions (theme-invariant) */
+  --dur-type-char:    35ms;     /* per-character delay in intro typing sequence */
+  --dur-skeleton:     1600ms;   /* skeleton shimmer animation cycle */
+  --dur-cursor-blink: 1000ms;   /* terminal caret blink */
+  --dur-submit-step:  500ms;    /* submitting ellipsis step duration */
 }
 
 html {

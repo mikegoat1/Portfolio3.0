@@ -1,0 +1,37 @@
+/* ContactForm — scoped submitting-ellipsis animation. Gated behind motion. */
+
+.submit-caret {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1em;
+  background-color: var(--accent);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .submitting-ellipsis::after {
+    content: "";
+    animation: submit-dots calc(var(--dur-submit-step, 500ms) * 3) steps(1) infinite;
+  }
+
+  @keyframes submit-dots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+    100% { content: "."; }
+  }
+
+  .submit-caret {
+    animation: submit-caret-blink var(--dur-cursor-blink, 1000ms) steps(1) infinite;
+  }
+
+  @keyframes submit-caret-blink {
+    50% { opacity: 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submitting-ellipsis::after { content: "..."; }
+  .submit-caret { animation: none; }
+}

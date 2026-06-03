@@ -17,6 +17,8 @@ import { styled } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { projects } from "../../data/projects";
 import PageBackground from "../../components/PageBackground";
+import GitHubActivity from "../../components/GitHubActivity";
+import Seo from "../../components/Seo";
 
 // Derive an editor-style filename from a project title, e.g.
 // "The Event" -> "the-event.tsx". Pure, data-driven (no hardcoding).
@@ -82,6 +84,12 @@ const Work = () => {
       }}
     >
       <PageBackground variant="grid" />
+
+      <Seo
+        title="Work"
+        description="Selected projects and recent open-source activity by Michael Johnson — React, Node.js, MongoDB, and more."
+        path="/work"
+      />
 
       {/* Section header as a terminal prompt */}
       <Box sx={{ textAlign: "center", mb: "4rem" }}>
@@ -263,6 +271,9 @@ const Work = () => {
           </Grid2>
         ))}
       </Grid2>
+
+      {/* Live GitHub activity */}
+      <GitHubActivity />
     </Container>
   );
 };

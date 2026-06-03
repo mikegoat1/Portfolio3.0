@@ -1,0 +1,30 @@
+/* GitHubActivity — scoped skeleton shimmer. Gated behind reduced-motion. */
+
+.skeleton-pulse {
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base) 0%,
+    var(--skeleton-shimmer) 50%,
+    var(--skeleton-base) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skeleton-pulse {
+    animation: skeleton-shimmer var(--dur-skeleton, 1600ms) ease-in-out infinite;
+  }
+
+  @keyframes skeleton-shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-pulse {
+    animation: none;
+    background: var(--skeleton-base);
+  }
+}
