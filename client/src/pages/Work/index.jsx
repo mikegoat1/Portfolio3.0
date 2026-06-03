@@ -11,7 +11,6 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { makeStyles } from "@mui/styles";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import WebIcon from "@mui/icons-material/Web";
 import Quiz from "../../assets/Great-Quiz.png";
@@ -26,26 +25,21 @@ import backgroundImage from "../../assets/background.jpg";
 
 // I want to create a landing page first, then have the user navigate to the about me page.
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-    backgroundColor: "#F4F4F4",
-    boxShadow: "0 4px 8px rgba(138, 143, 153, 0.2)",
-    border: "1px solid #8A8F99",
-  },
-  media: {
-    height: 140,
-  },
-  description: {
-    color: "#8A8F99",
-  },
-  chip: {
-    backgroundColor: "#A8BCA1",
-    color: "#3C3C3C",
-    marginRight: 4,
-    marginBottom: 4,
-  },
-});
+const cardSx = {
+  maxWidth: 345,
+  backgroundColor: "#F4F4F4",
+  boxShadow: "0 4px 8px rgba(138, 143, 153, 0.2)",
+  border: "1px solid #8A8F99",
+};
+const mediaSx = {
+  height: 140,
+};
+const chipSx = {
+  backgroundColor: "#A8BCA1",
+  color: "#3C3C3C",
+  marginRight: "4px",
+  marginBottom: "4px",
+};
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -133,7 +127,6 @@ const projects = [
   },
 ];
 const Work = () => {
-  const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = (index) => {
@@ -175,9 +168,9 @@ const Work = () => {
       <Grid2 container spacing={4} justifyContent="center" alignItems="center">
         {projects.map((project, index) => (
           <Grid2 item size={{ md: 4, sm: 6, xs: 12 }} key={index}>
-            <Card className={classes.root}>
+            <Card sx={cardSx}>
               <CardMedia
-                className={classes.media}
+                sx={mediaSx}
                 image={project.image}
                 title={project.title}
               />
@@ -195,9 +188,8 @@ const Work = () => {
                     <Chip
                       key={index}
                       label={tag}
-                      className={classes.chip}
                       size="small"
-                      sx={{ backgroundColor: "#A8BCA1", color: "#3C3C3C" }}
+                      sx={chipSx}
                     />
                   ))}
                 </div>
