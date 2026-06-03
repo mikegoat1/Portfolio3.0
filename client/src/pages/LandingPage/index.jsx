@@ -1,77 +1,142 @@
 import React from "react";
-import { Container, Typography, Button, Box } from "@mui/material";
+import { Box, Typography, Button, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 import backgroundImage from "../../assets/backgrounds.jpg";
+import PageBackground from "../../components/PageBackground";
+import { EMAIL_HREF } from "../../config/site";
 
 const LandingPage = () => {
   const handleEmailClick = () => {
-    window.location.href = "mailto:mikeg.o.a.t.1@gmail.com";
+    window.location.href = EMAIL_HREF;
   };
 
   return (
-    <Container
-      maxWidth="md"
+    <Box
       sx={{
-        textAlign: "center",
-        padding: "2rem",
+        position: "relative",
+        minHeight: "calc(100vh - 64px - 56px)", // viewport minus navbar + footer
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        minHeight: "100vh",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "auto",
-          backgroundPosition: "right",
-          opacity: 0.8,
-          zIndex: -1,
-        },
+        alignItems: "center",
+        backgroundColor: "var(--bg)",
+        overflow: "hidden",
       }}
     >
-      <Typography variant="h4" gutterBottom sx={{ color: 'white',}}>
-      Full Stack Developer | Frontend & Backend Innovation.
-      </Typography>
-      <Typography variant="h5" gutterBottom sx={{ color: 'white',}}>
-      Bringing Code and Creativity Together.
-      </Typography>
-      <Box sx={{ display: "flex", gap: "1rem", marginTop: "1rem", justifyContent: "center" }}>
-        <Button
-          variant="contained"
-          color="primary"
-          component={Link}
-          to="/about"
+      {/* Photo, dimmed, behind a scrim so hero text is never white-on-photo */}
+      <PageBackground
+        image={backgroundImage}
+        opacity={0.35}
+        backgroundSize="cover"
+        backgroundPosition="right center"
+      />
+      <Box
+        aria-hidden="true"
+        sx={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(90deg, var(--scrim) 0%, var(--scrim) 55%, transparent 100%)",
+          zIndex: 0,
+        }}
+      />
+
+      <Container maxWidth="md" sx={{ position: "relative", zIndex: 1, py: 6 }}>
+        {/* Terminal-prompt treatment */}
+        <Box
           sx={{
-            backgroundColor: "#E2725B", // Burnt Sienna color
-            "&:hover": {
-              backgroundColor: "#D65A4A", // Darker shade for hover effect
-              color: "#fff",
-            },
-            padding: "0.5rem 1rem", // Smaller button size
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.95rem",
+            color: "var(--accent)",
+            mb: 2,
           }}
         >
-          About Me
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleEmailClick}
+          <Box component="span">$</Box>
+          <Box
+            component="span"
+            className="type-line type-caret"
+            sx={{ color: "var(--text-muted)" }}
+          >
+            whoami
+          </Box>
+        </Box>
+
+        <Typography
+          variant="h2"
           sx={{
-            backgroundColor: "#E2725B", // Burnt Sienna color
-            "&:hover": {
-              backgroundColor: "#D65A4A", // Darker shade for hover effect
-            },
-            padding: "0.5rem 1rem",
+            fontFamily: "var(--font-ui)",
+            fontWeight: 700,
+            color: "var(--text)",
+            lineHeight: 1.05,
+            fontSize: { xs: "2.25rem", sm: "3.25rem" },
+            mb: 2,
           }}
         >
-          Contact Me
-        </Button>
-      </Box>
-    </Container>
+          <Box component="span" className="type-line type-line--delayed">
+            Full Stack Developer
+          </Box>
+        </Typography>
+
+        <Typography
+          sx={{
+            fontFamily: "var(--font-mono)",
+            color: "var(--text-muted)",
+            fontSize: { xs: "0.95rem", sm: "1.1rem" },
+            mb: 4,
+            maxWidth: "46ch",
+          }}
+        >
+          {"// frontend & backend innovation — bringing code and creativity together."}
+        </Typography>
+
+        <Box sx={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+          <Button
+            variant="contained"
+            component={Link}
+            to="/work"
+            sx={{
+              backgroundColor: "var(--accent)",
+              color: "var(--on-accent)",
+              fontFamily: "var(--font-ui)",
+              px: 3,
+              py: 1,
+              "&:hover": { backgroundColor: "var(--accent-2)", color: "var(--on-accent)" },
+            }}
+          >
+            View Work →
+          </Button>
+          <Button
+            variant="outlined"
+            component={Link}
+            to="/about"
+            sx={{
+              color: "var(--text)",
+              borderColor: "var(--border)",
+              fontFamily: "var(--font-ui)",
+              px: 3,
+              py: 1,
+              "&:hover": { borderColor: "var(--accent)", color: "var(--accent)" },
+            }}
+          >
+            About
+          </Button>
+          <Button
+            variant="text"
+            onClick={handleEmailClick}
+            sx={{
+              color: "var(--text-muted)",
+              fontFamily: "var(--font-ui)",
+              px: 3,
+              py: 1,
+              "&:hover": { color: "var(--accent)", backgroundColor: "transparent" },
+            }}
+          >
+            Contact
+          </Button>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 

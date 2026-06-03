@@ -1,0 +1,130 @@
+/* ============================================================
+   Design Tokens — "Terminal / IDE" (Direction A)
+   Single source of truth for color, font, spacing, motion.
+   Keyed by [data-theme] on <html>. Dark is the default.
+   All text/bg pairings verified WCAG 2.1 AA (see notes inline).
+   ============================================================ */
+
+:root,
+[data-theme="dark"] {
+  /* Surfaces & text — GitHub dark */
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #c9d1d9;        /* 12.26:1 on --bg */
+  --text-muted: #8b949e;  /*  6.15:1 on --bg */
+  --accent: #3fb950;      /*  7.45:1 on --bg */
+  --accent-2: #56d4dd;    /* 10.69:1 on --bg */
+
+  /* Derived roles */
+  --on-accent: #0d1117;   /* text on accent button — 7.45:1 */
+  --scrim: rgba(13, 17, 23, 0.82); /* hero text backdrop over photo */
+  --shadow: 0 8px 24px rgba(1, 4, 9, 0.6);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  /* GitHub light — accents shifted to AA-safe values on white.
+     Note: the dark-mode green (#3fb950) only reaches ~2.3:1 on
+     white, so light mode uses GitHub's light green/blue instead. */
+  --bg: #ffffff;
+  --surface: #f6f8fa;
+  --border: #d0d7de;
+  --text: #1f2328;        /* 15.80:1 on --bg */
+  --text-muted: #59636e;  /*  6.11:1 on --bg */
+  --accent: #1a7f37;      /*  5.08:1 on --bg */
+  --accent-2: #0969da;    /*  5.19:1 on --bg */
+
+  --on-accent: #ffffff;   /* white on green button — 5.08:1 */
+  --scrim: rgba(255, 255, 255, 0.85);
+  --shadow: 0 8px 24px rgba(31, 35, 40, 0.12);
+
+  color-scheme: light;
+}
+
+/* ---- Fonts ---- */
+:root {
+  --font-ui: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Spacing scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 150ms;
+  --dur: 240ms;
+}
+
+html {
+  background-color: var(--bg);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--dur) var(--ease),
+              color var(--dur) var(--ease);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* ---- Hero typed-prompt reveal (Direction A) ----
+   Runs once on load. Only enabled when motion is welcome; otherwise the
+   text renders as its static final state (no animation applied at all). */
+@media (prefers-reduced-motion: no-preference) {
+  .type-line {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: type-in 900ms steps(24, end) 150ms forwards;
+  }
+
+  /* second line starts after the first finishes */
+  .type-line--delayed {
+    animation-delay: 1100ms;
+    animation-duration: 1100ms;
+  }
+
+  /* blinking caret on the prompt while/after typing */
+  .type-caret::after {
+    content: "▋";
+    margin-left: 2px;
+    color: var(--accent);
+    animation: caret-blink 1s steps(1) infinite;
+  }
+
+  @keyframes type-in {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes caret-blink {
+    50% { opacity: 0; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
