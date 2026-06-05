@@ -44,7 +44,7 @@ export const projects = [
     description:
       "Ticket-Scalper is a ticket search platform that dynamically aggregates sports, concert, and theater ticket listings from over 60 ticketing sites, offering a seamless and comprehensive browsing experience.",
     image: Ticket,
-    link: "https://maple-eh-00291.herokuapp.com",
+    link: "https://ticket-scalper-tdck.onrender.com",
     gitHub: "https://github.com/mikegoat1/Ticket-Scalper",
     tags: [
       "Handlebars",
