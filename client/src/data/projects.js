@@ -10,6 +10,7 @@ export const projects = [
     description:
       "The Event Management System is a platform for organizing and managing events, enabling users to create events, RSVP, and receive updates with features like real-time chat, event analytics, and a calendar with reminders. Built with Node.js, MongoDB, React, and deployed on Heroku, it offers secure authentication, seamless event creation, and an intuitive interface for managing attendees.",
     image: GatherHub,
+    link: "https://eventmanagementsystem-peach.vercel.app",
     gitHub: "https://github.com/mikegoat1/The-Eventers",
     tags: [
       "HTML",
