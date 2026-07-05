@@ -11,7 +11,7 @@ const LandingPage = () => {
     <>
       <Seo
         title="Home"
-        description="Michael Johnson — full stack developer in Los Angeles building performant, accessible web apps with React, Node.js, AWS, and MongoDB."
+        description="Michael Johnson — full stack developer in Los Angeles building MERN, AWS, media-processing, and cloud platform solutions."
         path="/"
       />
       <Box
@@ -87,7 +87,7 @@ const LandingPage = () => {
                 }}
               >
                 <Box component="span" className="type-line type-line--delayed">
-                  Full Stack Developer
+                  Full-Stack MERN + AWS Contractor
                 </Box>
               </Typography>
 
@@ -100,14 +100,14 @@ const LandingPage = () => {
                   maxWidth: "46ch",
                 }}
               >
-                {"// frontend & backend innovation — bringing code and creativity together."}
+                {"// MERN + AWS platforms, media workflows, and production integrations."}
               </Typography>
 
               <Box sx={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
                 <Button
                   variant="contained"
                   component={Link}
-                  to="/work"
+                  to="/contact"
                   sx={{
                     backgroundColor: "var(--accent)",
                     color: "var(--on-accent)",
@@ -117,12 +117,12 @@ const LandingPage = () => {
                     "&:hover": { backgroundColor: "var(--accent-2)", color: "var(--on-accent)" },
                   }}
                 >
-                  View Work →
+                  Start a Project →
                 </Button>
                 <Button
                   variant="outlined"
                   component={Link}
-                  to="/about"
+                  to="/work"
                   sx={{
                     color: "var(--text)",
                     borderColor: "var(--border)",
@@ -132,7 +132,7 @@ const LandingPage = () => {
                     "&:hover": { borderColor: "var(--accent)", color: "var(--accent)" },
                   }}
                 >
-                  About
+                  View Work
                 </Button>
                 <Button
                   variant="text"

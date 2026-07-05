@@ -142,7 +142,17 @@ const GitHubActivity = () => {
       {/* aria-live for loading/content transitions */}
       <Box
         aria-live="polite"
-        sx={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0 0 0 0)" }}
+        sx={{
+          position: "absolute",
+          width: "1px",
+          height: "1px",
+          margin: "-1px",
+          padding: 0,
+          overflow: "hidden",
+          clip: "rect(0 0 0 0)",
+          whiteSpace: "nowrap",
+          border: 0,
+        }}
       >
         {status === "loading" ? "Loading repositories" : ""}
       </Box>

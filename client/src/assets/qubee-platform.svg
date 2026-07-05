@@ -1,0 +1,32 @@
+<svg width="1400" height="612" viewBox="0 0 1400 612" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="612" fill="#101820"/>
+  <rect x="64" y="56" width="1272" height="500" rx="28" fill="#18242D" stroke="#31414C" stroke-width="2"/>
+  <rect x="64" y="56" width="1272" height="76" rx="28" fill="#0F171D"/>
+  <circle cx="112" cy="94" r="12" fill="#E2725B"/>
+  <circle cx="150" cy="94" r="12" fill="#D7B65D"/>
+  <circle cx="188" cy="94" r="12" fill="#5FBF8F"/>
+  <text x="248" y="103" fill="#B9C7D1" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Qubee Media Platform</text>
+  <rect x="104" y="176" width="328" height="328" rx="20" fill="#13202A" stroke="#31414C" stroke-width="2"/>
+  <rect x="138" y="212" width="260" height="150" rx="14" fill="#203340"/>
+  <path d="M168 326L230 268L276 307L316 270L374 326H168Z" fill="#7BDCB5"/>
+  <circle cx="344" cy="242" r="22" fill="#E2A55B"/>
+  <rect x="138" y="394" width="212" height="16" rx="8" fill="#5C7080"/>
+  <rect x="138" y="430" width="148" height="16" rx="8" fill="#5C7080"/>
+  <rect x="480" y="176" width="360" height="150" rx="18" fill="#13202A" stroke="#31414C" stroke-width="2"/>
+  <text x="512" y="224" fill="#F2F5F7" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Cloud Storage</text>
+  <text x="512" y="266" fill="#94A6B3" font-family="Inter, Arial, sans-serif" font-size="22">S3 uploads, permissions, CDN delivery</text>
+  <rect x="512" y="286" width="236" height="14" rx="7" fill="#7BDCB5"/>
+  <rect x="480" y="354" width="360" height="150" rx="18" fill="#13202A" stroke="#31414C" stroke-width="2"/>
+  <text x="512" y="402" fill="#F2F5F7" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Async Workers</text>
+  <text x="512" y="444" fill="#94A6B3" font-family="Inter, Arial, sans-serif" font-size="22">Queues, thumbnails, transcoding, zips</text>
+  <rect x="512" y="464" width="284" height="14" rx="7" fill="#E2A55B"/>
+  <rect x="888" y="176" width="408" height="328" rx="18" fill="#13202A" stroke="#31414C" stroke-width="2"/>
+  <text x="920" y="224" fill="#F2F5F7" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">MERN + AWS</text>
+  <g fill="#94A6B3" font-family="Inter, Arial, sans-serif" font-size="22">
+    <text x="920" y="278">React / GraphQL / Node.js</text>
+    <text x="920" y="324">MongoDB / DocumentDB</text>
+    <text x="920" y="370">Redis / SQS / ECS Fargate</text>
+    <text x="920" y="416">Lambda / S3 / CloudFront</text>
+  </g>
+  <path d="M926 468H1258" stroke="#7BDCB5" stroke-width="12" stroke-linecap="round"/>
+</svg>

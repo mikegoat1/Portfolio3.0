@@ -5,6 +5,40 @@ import { FORMSPREE_ENDPOINT } from "../../config/site";
 
 // Status: "idle" | "submitting" | "success" | "network-error"
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const INITIAL_VALUES = {
+  name: "",
+  email: "",
+  company: "",
+  projectType: "",
+  budget: "",
+  timeline: "",
+  message: "",
+};
+
+const PROJECT_TYPES = [
+  "Full-stack build",
+  "AWS infrastructure",
+  "Media processing workflow",
+  "API/SaaS integration",
+  "Debugging or stabilization",
+  "Ongoing contractor support",
+];
+
+const BUDGET_RANGES = [
+  "Not sure yet",
+  "$2k-$5k",
+  "$5k-$15k",
+  "$15k-$30k",
+  "$30k+",
+];
+
+const TIMELINES = [
+  "ASAP",
+  "This month",
+  "1-3 months",
+  "3+ months",
+  "Ongoing",
+];
 
 const TitleBar = () => (
   <Box
@@ -92,6 +126,17 @@ const inputBaseSx = {
   padding: "0 0 4px 0.5ch",
 };
 
+const selectBaseSx = {
+  ...inputBaseSx,
+  cursor: "pointer",
+  appearance: "none",
+  WebkitAppearance: "none",
+  "& option": {
+    backgroundColor: "var(--surface)",
+    color: "var(--text)",
+  },
+};
+
 const Rule = () => (
   <Box
     aria-hidden="true"
@@ -105,12 +150,17 @@ const Rule = () => (
 );
 
 const ContactForm = () => {
-  const [values, setValues] = useState({ name: "", email: "", message: "" });
+  const [values, setValues] = useState(INITIAL_VALUES);
   const [errors, setErrors] = useState({});
   const [focused, setFocused] = useState(null);
   const [status, setStatus] = useState("idle");
 
+  const nameRef = useRef(null);
   const emailRef = useRef(null);
+  const companyRef = useRef(null);
+  const projectTypeRef = useRef(null);
+  const budgetRef = useRef(null);
+  const timelineRef = useRef(null);
   const messageRef = useRef(null);
   const sendRef = useRef(null);
   const liveRef = useRef(null);
@@ -131,6 +181,8 @@ const ContactForm = () => {
     if (!values.email.trim()) next.email = "email: required";
     else if (!EMAIL_RE.test(values.email.trim()))
       next.email = "email: invalid format";
+    if (!values.projectType) next.projectType = "project_type: required";
+    if (!values.timeline) next.timeline = "timeline: required";
     if (!values.message.trim()) next.message = "message: required";
     setErrors(next);
     return next;
@@ -139,9 +191,21 @@ const ContactForm = () => {
   const submit = async () => {
     const found = validate();
     if (Object.keys(found).length > 0) {
-      const firstKey = ["name", "email", "message"].find((k) => found[k]);
+      const firstKey = [
+        "name",
+        "email",
+        "projectType",
+        "timeline",
+        "message",
+      ].find((k) => found[k]);
       announce(`Validation error: ${found[firstKey]}`);
-      const refMap = { name: null, email: emailRef, message: messageRef };
+      const refMap = {
+        name: nameRef,
+        email: emailRef,
+        projectType: projectTypeRef,
+        timeline: timelineRef,
+        message: messageRef,
+      };
       if (refMap[firstKey] && refMap[firstKey].current)
         refMap[firstKey].current.focus();
       return;
@@ -157,6 +221,10 @@ const ContactForm = () => {
         body: JSON.stringify({
           name: values.name,
           email: values.email,
+          company: values.company,
+          projectType: values.projectType,
+          budget: values.budget,
+          timeline: values.timeline,
           message: values.message,
         }),
       });
@@ -174,7 +242,7 @@ const ContactForm = () => {
   };
 
   const resetForm = () => {
-    setValues({ name: "", email: "", message: "" });
+    setValues(INITIAL_VALUES);
     setErrors({});
     setStatus("idle");
     announce("Form reset.");
@@ -284,7 +352,9 @@ const ContactForm = () => {
             <PromptLabel name="name" />
             <Box
               component="input"
+              ref={nameRef}
               type="text"
+              name="name"
               value={values.name}
               onChange={setField("name")}
               onFocus={() => setFocused("name")}
@@ -316,11 +386,12 @@ const ContactForm = () => {
               component="input"
               ref={emailRef}
               type="email"
+              name="email"
               value={values.email}
               onChange={setField("email")}
               onFocus={() => setFocused("email")}
               onBlur={() => setFocused(null)}
-              onKeyDown={handleFieldKeyDown(messageRef)}
+              onKeyDown={handleFieldKeyDown(companyRef)}
               disabled={disabled}
               aria-label="email"
               aria-invalid={Boolean(errors.email)}
@@ -330,6 +401,147 @@ const ContactForm = () => {
             />
           </Box>
           <ErrorMsg id="err-email">{errors.email}</ErrorMsg>
+        </Box>
+
+        {/* company */}
+        <Box sx={{ mb: "var(--space-3)" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "baseline",
+              borderBottom: fieldUnderline(focused === "company", errors.company),
+              minHeight: 44,
+            }}
+          >
+            <PromptLabel name="company" />
+            <Box
+              component="input"
+              ref={companyRef}
+              type="text"
+              name="company"
+              value={values.company}
+              onChange={setField("company")}
+              onFocus={() => setFocused("company")}
+              onBlur={() => setFocused(null)}
+              onKeyDown={handleFieldKeyDown(projectTypeRef)}
+              disabled={disabled}
+              aria-label="company"
+              autoComplete="organization"
+              placeholder="optional"
+              sx={{
+                ...inputBaseSx,
+                "&::placeholder": { color: "var(--text-muted)", opacity: 0.6 },
+              }}
+            />
+          </Box>
+        </Box>
+
+        {/* project type */}
+        <Box sx={{ mb: "var(--space-3)" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "baseline",
+              borderBottom: fieldUnderline(
+                focused === "projectType",
+                errors.projectType
+              ),
+              minHeight: 44,
+            }}
+          >
+            <PromptLabel name="project_type" />
+            <Box
+              component="select"
+              ref={projectTypeRef}
+              name="projectType"
+              value={values.projectType}
+              onChange={setField("projectType")}
+              onFocus={() => setFocused("projectType")}
+              onBlur={() => setFocused(null)}
+              disabled={disabled}
+              aria-label="project type"
+              aria-invalid={Boolean(errors.projectType)}
+              aria-describedby={errors.projectType ? "err-project-type" : undefined}
+              sx={selectBaseSx}
+            >
+              <option value="">choose one</option>
+              {PROJECT_TYPES.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </Box>
+          </Box>
+          <ErrorMsg id="err-project-type">{errors.projectType}</ErrorMsg>
+        </Box>
+
+        {/* budget */}
+        <Box sx={{ mb: "var(--space-3)" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "baseline",
+              borderBottom: fieldUnderline(focused === "budget", errors.budget),
+              minHeight: 44,
+            }}
+          >
+            <PromptLabel name="budget" />
+            <Box
+              component="select"
+              ref={budgetRef}
+              name="budget"
+              value={values.budget}
+              onChange={setField("budget")}
+              onFocus={() => setFocused("budget")}
+              onBlur={() => setFocused(null)}
+              disabled={disabled}
+              aria-label="budget"
+              sx={selectBaseSx}
+            >
+              <option value="">optional</option>
+              {BUDGET_RANGES.map((range) => (
+                <option key={range} value={range}>
+                  {range}
+                </option>
+              ))}
+            </Box>
+          </Box>
+        </Box>
+
+        {/* timeline */}
+        <Box sx={{ mb: "var(--space-3)" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "baseline",
+              borderBottom: fieldUnderline(focused === "timeline", errors.timeline),
+              minHeight: 44,
+            }}
+          >
+            <PromptLabel name="timeline" />
+            <Box
+              component="select"
+              ref={timelineRef}
+              name="timeline"
+              value={values.timeline}
+              onChange={setField("timeline")}
+              onFocus={() => setFocused("timeline")}
+              onBlur={() => setFocused(null)}
+              disabled={disabled}
+              aria-label="timeline"
+              aria-invalid={Boolean(errors.timeline)}
+              aria-describedby={errors.timeline ? "err-timeline" : undefined}
+              sx={selectBaseSx}
+            >
+              <option value="">choose one</option>
+              {TIMELINES.map((timeline) => (
+                <option key={timeline} value={timeline}>
+                  {timeline}
+                </option>
+              ))}
+            </Box>
+          </Box>
+          <ErrorMsg id="err-timeline">{errors.timeline}</ErrorMsg>
         </Box>
 
         {/* message */}
@@ -358,6 +570,7 @@ const ContactForm = () => {
             <Box
               component="textarea"
               ref={messageRef}
+              name="message"
               value={values.message}
               onChange={setField("message")}
               onFocus={() => setFocused("message")}
@@ -368,7 +581,7 @@ const ContactForm = () => {
               aria-label="message"
               aria-invalid={Boolean(errors.message)}
               aria-describedby={errors.message ? "err-message" : undefined}
-              placeholder="type your message… (Ctrl+Enter to send)"
+              placeholder="scope, goals, links, constraints... (Ctrl+Enter to send)"
               sx={{
                 ...inputBaseSx,
                 resize: "none",
@@ -523,11 +736,14 @@ const LiveRegion = ({ liveRef }) => (
     aria-live="assertive"
     sx={{
       position: "absolute",
-      width: 1,
-      height: 1,
+      width: "1px",
+      height: "1px",
+      margin: "-1px",
+      padding: 0,
       overflow: "hidden",
       clip: "rect(0 0 0 0)",
       whiteSpace: "nowrap",
+      border: 0,
     }}
   />
 );

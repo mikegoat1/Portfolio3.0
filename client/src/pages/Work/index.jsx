@@ -87,7 +87,7 @@ const Work = () => {
 
       <Seo
         title="Work"
-        description="Selected projects and recent open-source activity by Michael Johnson — React, Node.js, MongoDB, and more."
+        description="Selected projects and current contract work by Michael Johnson — Qubee, React, Node.js, GraphQL, AWS, MongoDB, and media-processing workflows."
         path="/work"
       />
 
@@ -182,6 +182,21 @@ const Work = () => {
                   {project.title}
                 </Typography>
 
+                {project.context ? (
+                  <Box
+                    component="span"
+                    sx={{
+                      display: "block",
+                      mb: "var(--space-2)",
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.72rem",
+                      color: "var(--accent-2)",
+                    }}
+                  >
+                    {`// ${project.context}`}
+                  </Box>
+                ) : null}
+
                 {/* Tags as a mono import statement */}
                 <Box
                   sx={{
@@ -219,13 +234,15 @@ const Work = () => {
                 disableSpacing
                 sx={{ borderTop: "1px solid var(--border)" }}
               >
-                <IconButton
-                  href={project.gitHub}
-                  sx={{ color: "var(--text-muted)", "&:hover": { color: "var(--accent)" } }}
-                  aria-label={`GitHub repository for ${project.title}`}
-                >
-                  <GitHubIcon />
-                </IconButton>
+                {project.gitHub ? (
+                  <IconButton
+                    href={project.gitHub}
+                    sx={{ color: "var(--text-muted)", "&:hover": { color: "var(--accent)" } }}
+                    aria-label={`GitHub repository for ${project.title}`}
+                  >
+                    <GitHubIcon />
+                  </IconButton>
+                ) : null}
                 {project.link ? (
                   <IconButton
                     href={project.link}
@@ -234,6 +251,19 @@ const Work = () => {
                   >
                     <WebIcon />
                   </IconButton>
+                ) : null}
+                {!project.gitHub && !project.link ? (
+                  <Box
+                    component="span"
+                    sx={{
+                      px: "var(--space-2)",
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.72rem",
+                      color: "var(--text-muted)",
+                    }}
+                  >
+                    private client work
+                  </Box>
                 ) : null}
                 <ExpandMore
                   expand={expanded === index}

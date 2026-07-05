@@ -26,12 +26,41 @@ afterAll(() => {
 
 // ---------- helpers ----------
 
-const fillForm = async (user, { name = "Alice", email = "alice@example.com", message = "Hello!" } = {}) => {
+const fillForm = async (
+  user,
+  {
+    name = "Alice",
+    email = "alice@example.com",
+    company = "Acme",
+    projectType = "Full-stack build",
+    budget = "$5k-$15k",
+    timeline = "This month",
+    message = "Hello!",
+  } = {}
+) => {
   if (name !== null) {
     await user.type(screen.getByRole("textbox", { name: /name/i }), name);
   }
   if (email !== null) {
     await user.type(screen.getByRole("textbox", { name: /email/i }), email);
+  }
+  if (company !== null) {
+    await user.type(screen.getByRole("textbox", { name: /company/i }), company);
+  }
+  if (projectType !== null) {
+    await user.selectOptions(
+      screen.getByRole("combobox", { name: /project type/i }),
+      projectType
+    );
+  }
+  if (budget !== null) {
+    await user.selectOptions(screen.getByRole("combobox", { name: /budget/i }), budget);
+  }
+  if (timeline !== null) {
+    await user.selectOptions(
+      screen.getByRole("combobox", { name: /timeline/i }),
+      timeline
+    );
   }
   if (message !== null) {
     await user.type(screen.getByRole("textbox", { name: /message/i }), message);
@@ -92,6 +121,16 @@ describe("ContactForm", () => {
       expect(screen.getByRole("textbox", { name: /message/i })).toBeInTheDocument();
     });
 
+    it("renders client project intake fields", () => {
+      render(<ContactForm />);
+      expect(screen.getByRole("textbox", { name: /company/i })).toBeInTheDocument();
+      expect(
+        screen.getByRole("combobox", { name: /project type/i })
+      ).toBeInTheDocument();
+      expect(screen.getByRole("combobox", { name: /budget/i })).toBeInTheDocument();
+      expect(screen.getByRole("combobox", { name: /timeline/i })).toBeInTheDocument();
+    });
+
     it("renders the prompt-style 'message' label segment in the DOM", () => {
       const { container } = render(<ContactForm />);
       expect(promptLabelText(container, "message")).toBe(true);
@@ -139,6 +178,28 @@ describe("ContactForm", () => {
         const el = findErrorById("err-message");
         expect(el).not.toBeNull();
         expect(el.textContent).toMatch(/message: required/i);
+      });
+    });
+
+    it("shows 'project_type: required' when project type is blank on submit", async () => {
+      const user = userEvent.setup();
+      render(<ContactForm />);
+      await submitForm(user);
+      await waitFor(() => {
+        const el = findErrorById("err-project-type");
+        expect(el).not.toBeNull();
+        expect(el.textContent).toMatch(/project_type: required/i);
+      });
+    });
+
+    it("shows 'timeline: required' when timeline is blank on submit", async () => {
+      const user = userEvent.setup();
+      render(<ContactForm />);
+      await submitForm(user);
+      await waitFor(() => {
+        const el = findErrorById("err-timeline");
+        expect(el).not.toBeNull();
+        expect(el.textContent).toMatch(/timeline: required/i);
       });
     });
 
@@ -240,6 +301,37 @@ describe("ContactForm", () => {
       await submitForm(user);
       expect(await screen.findByText(/\[n\] new message/i)).toBeInTheDocument();
     });
+
+    it("submits client project context to Formspree", async () => {
+      global.fetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({}),
+      });
+      const user = userEvent.setup();
+      render(<ContactForm />);
+      await fillForm(user, {
+        name: "Client",
+        email: "client@example.com",
+        company: "Studio Co",
+        projectType: "API/SaaS integration",
+        budget: "$15k-$30k",
+        timeline: "1-3 months",
+        message: "Need Stripe and storage integration support.",
+      });
+      await submitForm(user);
+
+      await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+      const [, options] = global.fetch.mock.calls[0];
+      expect(JSON.parse(options.body)).toEqual({
+        name: "Client",
+        email: "client@example.com",
+        company: "Studio Co",
+        projectType: "API/SaaS integration",
+        budget: "$15k-$30k",
+        timeline: "1-3 months",
+        message: "Need Stripe and storage integration support.",
+      });
+    });
   });
 
   describe("network error", () => {
@@ -305,14 +397,24 @@ describe("ContactForm", () => {
       expect(document.activeElement).toBe(emailInput);
     });
 
-    it("pressing Enter on the email field moves focus to the message textarea", async () => {
+    it("pressing Enter on the email field moves focus to the company field", async () => {
       const user = userEvent.setup();
       render(<ContactForm />);
       const emailInput = screen.getByRole("textbox", { name: /email/i });
-      const messageInput = screen.getByRole("textbox", { name: /message/i });
+      const companyInput = screen.getByRole("textbox", { name: /company/i });
       await user.click(emailInput);
       fireEvent.keyDown(emailInput, { key: "Enter", code: "Enter" });
-      expect(document.activeElement).toBe(messageInput);
+      expect(document.activeElement).toBe(companyInput);
+    });
+
+    it("pressing Enter on the company field moves focus to project type", async () => {
+      const user = userEvent.setup();
+      render(<ContactForm />);
+      const companyInput = screen.getByRole("textbox", { name: /company/i });
+      const projectTypeInput = screen.getByRole("combobox", { name: /project type/i });
+      await user.click(companyInput);
+      fireEvent.keyDown(companyInput, { key: "Enter", code: "Enter" });
+      expect(document.activeElement).toBe(projectTypeInput);
     });
 
     it("pressing Ctrl+Enter on the message textarea submits the form", async () => {

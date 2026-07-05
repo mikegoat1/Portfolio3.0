@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 
 /**
  * Full-bleed background layer used behind page content.
- * Renders an absolutely-positioned, inset-0 layer at zIndex -1.
+ * Renders an absolutely-positioned, full-viewport-width layer at zIndex -1.
  * Place it as the first child of the page's MUI Container/Box.
  *
  * Two modes:
@@ -36,7 +36,10 @@ const PageBackground = ({
         aria-hidden="true"
         sx={{
           position: "absolute",
-          inset: 0,
+          top: 0,
+          right: "calc(50% - 50vw)",
+          bottom: 0,
+          left: "calc(50% - 50vw)",
           backgroundColor: "var(--bg)",
           backgroundImage: `
             repeating-linear-gradient(0deg, ${line} 0 1px, transparent 1px ${gridSize}px),
@@ -56,9 +59,9 @@ const PageBackground = ({
       sx={{
         position: "absolute",
         top: 0,
-        right: 0,
+        right: "calc(50% - 50vw)",
         bottom: 0,
-        left: 0,
+        left: "calc(50% - 50vw)",
         backgroundImage: `url(${image})`,
         backgroundSize,
         ...(backgroundPosition ? { backgroundPosition } : {}),

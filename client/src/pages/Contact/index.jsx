@@ -21,7 +21,7 @@ const Contact = () => (
 
     <Seo
       title="Contact"
-      description="Get in touch with Michael Johnson — full stack developer. Send a message about roles, projects, or collaboration."
+      description="Start a project with Michael Johnson — full stack MERN and AWS contractor for web apps, media workflows, integrations, and cloud infrastructure."
       path="/contact"
     />
 
@@ -45,7 +45,20 @@ const Contact = () => (
         variant="h4"
         sx={{ fontFamily: "var(--font-ui)", color: "var(--text)" }}
       >
-        Get In Touch
+        Start a Project
+      </Typography>
+      <Typography
+        component="p"
+        sx={{
+          color: "var(--text-muted)",
+          fontFamily: "var(--font-ui)",
+          mt: 1,
+          maxWidth: "58ch",
+          mx: "auto",
+        }}
+      >
+        Share the project type, timeline, and scope so I can respond with the
+        right next step.
       </Typography>
     </Box>
 

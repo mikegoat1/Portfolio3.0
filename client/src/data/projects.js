@@ -3,8 +3,28 @@ import Flicc from "../assets/FLICCPICKER.png";
 import Lemon from "../assets/Logo.png";
 import GatherHub from "../assets/Updated_GatherHub_Logo_Together_Here.png";
 import ServerlessTaskTracker from "../assets/serverless-task-tracker.png";
+import QubeePlatform from "../assets/qubee-platform.svg";
 
 export const projects = [
+  {
+    title: "Qubee",
+    context: "Current contract",
+    description:
+      "Built and maintained Qubee, a full-stack cloud storage and media-processing platform for teams. Owned frontend, backend, database, async workers, AWS infrastructure, deployments, and third-party integrations across a React, Node.js, GraphQL, MongoDB/DocumentDB, Redis, SQS, ECS, Lambda, S3, and CloudFront architecture.",
+    image: QubeePlatform,
+    tags: [
+      "React",
+      "Node.js",
+      "GraphQL",
+      "AWS",
+      "MongoDB",
+      "Redis",
+      "SQS",
+      "ECS",
+      "Lambda",
+      "S3",
+    ],
+  },
   {
     title: "The Event",
     description:

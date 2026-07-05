@@ -37,7 +37,7 @@ export const COMMAND_NAMES = [
 const HELP_ROWS = [
   ["about", "// about me"],
   ["projects", "// view recent work"],
-  ["contact", "// get in touch"],
+  ["contact", "// start a project"],
   ["whoami", "// who is this guy?"],
   ["help", "// show this message"],
   ["clear", "// clear the terminal"],
@@ -62,8 +62,8 @@ const commands = {
   whoami: () => ({
     output: [
       line("michael johnson", C.text, { weight: 500 }),
-      line("full-stack developer — los angeles, ca", C.muted),
-      line("5+ years · apple · 2U · open to roles", C.muted),
+      line("full-stack MERN + AWS developer — los angeles, ca", C.muted),
+      line("5+ years · apple · 2U · current Qubee contract", C.muted),
     ],
   }),
 
@@ -71,9 +71,9 @@ const commands = {
     output: [
       line("// about michael johnson", C.muted),
       rule(),
-      line("Frontend + backend engineer with a", C.text),
-      line("passion for craft and clean systems.", C.text),
-      line("React · Node.js · AWS · MongoDB · MySQL", C.text),
+      line("Full-stack engineer for cloud media platforms,", C.text),
+      line("MERN apps, AWS infrastructure, and integrations.", C.text),
+      line("React · Node.js · GraphQL · AWS · MongoDB · Redis", C.text),
       blank(),
       {
         segments: [
@@ -90,11 +90,12 @@ const commands = {
       line("// recent work — ls ~/projects", C.muted),
       rule(),
       ...[
-        ["01", "the-event.tsx", "React · Node · MongoDB"],
-        ["02", "little-lemon.tsx", "React"],
-        ["03", "flick-picker.tsx", "HTML · CSS · jQuery"],
-        ["04", "ticket-scalper.tsx", "Express · Sequelize"],
-        ["05", "serverless-task-tracker.tsx", "AWS · Lambda · DynamoDB"],
+        ["01", "qubee.tsx", "React · Node · GraphQL · AWS"],
+        ["02", "the-event.tsx", "React · Node · MongoDB"],
+        ["03", "little-lemon.tsx", "React"],
+        ["04", "flick-picker.tsx", "HTML · CSS · jQuery"],
+        ["05", "ticket-scalper.tsx", "Express · Sequelize"],
+        ["06", "serverless-task-tracker.tsx", "AWS · Lambda · DynamoDB"],
       ].map(([idx, file, tags]) => ({
         segments: [
           { text: `${idx}  `, color: C.muted },
@@ -110,7 +111,7 @@ const commands = {
 
   contact: () => ({
     output: [
-      line("// get in touch", C.muted),
+      line("// start a project", C.muted),
       rule(),
       {
         segments: [
@@ -131,7 +132,7 @@ const commands = {
         ],
       },
       blank(),
-      line("→ opening contact form …", C.accent2),
+      line("→ opening project intake …", C.accent2),
     ],
     action: { type: "navigate", to: "/contact" },
   }),
