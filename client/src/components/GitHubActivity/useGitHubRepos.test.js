@@ -12,6 +12,8 @@ const makeFakeRepo = (overrides = {}) => ({
   language: "JavaScript",
   stargazers_count: 5,
   html_url: "https://github.com/mikegoat1/my-repo",
+  fork: false,
+  archived: false,
   ...overrides,
 });
 
@@ -136,7 +138,7 @@ describe("useGitHubRepos", () => {
   });
 
   describe("sessionStorage caching", () => {
-    it("writes repos to sessionStorage under 'gh_repos' after a successful fetch", async () => {
+    it("writes repos to sessionStorage under 'gh_repos_v3' after a successful fetch", async () => {
       const fakeRepos = [makeFakeRepo()];
       global.fetch.mockResolvedValueOnce(makeOkResponse(fakeRepos));
 
@@ -144,9 +146,25 @@ describe("useGitHubRepos", () => {
       await waitFor(() => expect(result.current.status).toBe("success"));
 
       expect(sessionStorageMock.setItem).toHaveBeenCalledWith(
-        "gh_repos",
+        "gh_repos_v3",
         JSON.stringify([makeSlim(fakeRepos[0])])
       );
+    });
+
+    it("filters old portfolio repos, forks, and archived repos before rendering", async () => {
+      const fakeRepos = [
+        makeFakeRepo({ id: 1, name: "ecom-starter-kit" }),
+        makeFakeRepo({ id: 2, name: "Ticket-Scalper" }),
+        makeFakeRepo({ id: 3, name: "forked", fork: true }),
+        makeFakeRepo({ id: 4, name: "archived", archived: true }),
+        makeFakeRepo({ id: 5, name: "KsenseAssignment" }),
+      ];
+      global.fetch.mockResolvedValueOnce(makeOkResponse(fakeRepos));
+
+      const { result } = renderHook(() => useGitHubRepos());
+      await waitFor(() => expect(result.current.status).toBe("success"));
+
+      expect(result.current.repos).toEqual([makeSlim(fakeRepos[0])]);
     });
 
     it("reads from cache on second call and does NOT call fetch again", async () => {

@@ -1,0 +1,29 @@
+<svg width="1400" height="612" viewBox="0 0 1400 612" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="612" fill="#101820"/>
+  <rect x="70" y="64" width="1260" height="484" rx="26" fill="#18242D" stroke="#31414C" stroke-width="2"/>
+  <rect x="70" y="64" width="1260" height="72" rx="26" fill="#0F171D"/>
+  <circle cx="116" cy="100" r="11" fill="#E2725B"/>
+  <circle cx="152" cy="100" r="11" fill="#D7B65D"/>
+  <circle cx="188" cy="100" r="11" fill="#5FBF8F"/>
+  <text x="246" y="108" fill="#B9C7D1" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">E-commerce Starter Kit</text>
+  <rect x="112" y="178" width="340" height="306" rx="20" fill="#13202A" stroke="#31414C" stroke-width="2"/>
+  <text x="146" y="232" fill="#F2F5F7" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700">Storefront</text>
+  <rect x="146" y="266" width="112" height="94" rx="12" fill="#203340"/>
+  <rect x="278" y="266" width="112" height="94" rx="12" fill="#203340"/>
+  <rect x="146" y="382" width="244" height="16" rx="8" fill="#7BDCB5"/>
+  <rect x="146" y="420" width="174" height="16" rx="8" fill="#5C7080"/>
+  <rect x="520" y="178" width="360" height="306" rx="20" fill="#13202A" stroke="#31414C" stroke-width="2"/>
+  <text x="554" y="232" fill="#F2F5F7" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700">NestJS API</text>
+  <g fill="#94A6B3" font-family="Inter, Arial, sans-serif" font-size="22">
+    <text x="554" y="292">JWT auth + roles</text>
+    <text x="554" y="340">Products, cart, checkout</text>
+    <text x="554" y="388">Swagger / OpenAPI</text>
+    <text x="554" y="436">Prisma + PostgreSQL</text>
+  </g>
+  <rect x="948" y="178" width="340" height="306" rx="20" fill="#13202A" stroke="#31414C" stroke-width="2"/>
+  <text x="982" y="232" fill="#F2F5F7" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700">Client-Ready</text>
+  <path d="M982 292H1236" stroke="#7BDCB5" stroke-width="14" stroke-linecap="round"/>
+  <path d="M982 342H1182" stroke="#E2A55B" stroke-width="14" stroke-linecap="round"/>
+  <path d="M982 392H1254" stroke="#5C7080" stroke-width="14" stroke-linecap="round"/>
+  <path d="M982 442H1148" stroke="#7BDCB5" stroke-width="14" stroke-linecap="round"/>
+</svg>

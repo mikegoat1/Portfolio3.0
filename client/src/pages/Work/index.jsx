@@ -64,6 +64,12 @@ const ExpandMore = styled((props) => {
   ],
 }));
 
+const detailRows = [
+  ["Problem", "problem"],
+  ["My Role", "role"],
+  ["Outcome", "outcome"],
+];
+
 const Work = () => {
   const [expanded, setExpanded] = useState(null);
 
@@ -118,7 +124,7 @@ const Work = () => {
 
       <Grid2 container spacing={4} justifyContent="center" alignItems="stretch">
         {projects.map((project, index) => (
-          <Grid2 item size={{ md: 4, sm: 6, xs: 12 }} key={index}>
+          <Grid2 size={{ md: 6, sm: 6, xs: 12 }} key={index}>
             <Card sx={cardSx}>
               {/* File-tab header */}
               <Box
@@ -195,6 +201,20 @@ const Work = () => {
                   >
                     {`// ${project.context}`}
                   </Box>
+                ) : null}
+
+                {project.summary ? (
+                  <Typography
+                    variant="body2"
+                    component="p"
+                    sx={{
+                      color: "var(--text-muted)",
+                      fontFamily: "var(--font-ui)",
+                      mb: "var(--space-2)",
+                    }}
+                  >
+                    {project.summary}
+                  </Typography>
                 ) : null}
 
                 {/* Tags as a mono import statement */}
@@ -281,20 +301,46 @@ const Work = () => {
 
               <Collapse in={expanded === index} timeout="auto" unmountOnExit>
                 <CardContent sx={{ borderTop: "1px solid var(--border)" }}>
-                  <Typography
-                    variant="body2"
-                    component="p"
-                    sx={{ color: "var(--text-muted)", fontFamily: "var(--font-ui)" }}
-                  >
-                    {/* leading comment marker to keep the editor metaphor */}
-                    <Box
-                      component="span"
-                      sx={{ fontFamily: "var(--font-mono)", color: "var(--accent)" }}
+                  {detailRows.map(([label, key]) =>
+                    project[key] ? (
+                      <Box key={key} sx={{ mb: "var(--space-3)" }}>
+                        <Box
+                          component="span"
+                          sx={{
+                            display: "block",
+                            mb: "var(--space-1)",
+                            fontFamily: "var(--font-mono)",
+                            fontSize: "0.72rem",
+                            color: "var(--accent)",
+                          }}
+                        >
+                          {`// ${label}`}
+                        </Box>
+                        <Typography
+                          variant="body2"
+                          component="p"
+                          sx={{
+                            color: "var(--text-muted)",
+                            fontFamily: "var(--font-ui)",
+                          }}
+                        >
+                          {project[key]}
+                        </Typography>
+                      </Box>
+                    ) : null
+                  )}
+                  {project.description ? (
+                    <Typography
+                      variant="body2"
+                      component="p"
+                      sx={{
+                        color: "var(--text-muted)",
+                        fontFamily: "var(--font-ui)",
+                      }}
                     >
-                      {"// "}
-                    </Box>
-                    {project.description}
-                  </Typography>
+                      {project.description}
+                    </Typography>
+                  ) : null}
                 </CardContent>
               </Collapse>
             </Card>

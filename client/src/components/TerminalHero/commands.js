@@ -91,11 +91,9 @@ const commands = {
       rule(),
       ...[
         ["01", "qubee.tsx", "React · Node · GraphQL · AWS"],
-        ["02", "the-event.tsx", "React · Node · MongoDB"],
-        ["03", "little-lemon.tsx", "React"],
-        ["04", "flick-picker.tsx", "HTML · CSS · jQuery"],
-        ["05", "ticket-scalper.tsx", "Express · Sequelize"],
-        ["06", "serverless-task-tracker.tsx", "AWS · Lambda · DynamoDB"],
+        ["02", "e-commerce-starter-kit.tsx", "Next · Nest · Postgres"],
+        ["03", "the-event.tsx", "React · Node · MongoDB"],
+        ["04", "serverless-task-tracker.tsx", "AWS · Lambda · DynamoDB"],
       ].map(([idx, file, tags]) => ({
         segments: [
           { text: `${idx}  `, color: C.muted },

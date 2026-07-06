@@ -1,6 +1,7 @@
 import React from "react";
 
-import { BottomNavigation, BottomNavigationAction, Box } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Box, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
@@ -17,8 +18,41 @@ const Footer = () => {
       sx={{
         width: "100%",
         borderTop: "1px solid var(--border)",
+        backgroundColor: "var(--surface)",
       }}
     >
+      <Box
+        sx={{
+          px: "var(--space-4)",
+          py: "var(--space-4)",
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          gap: "var(--space-3)",
+          alignItems: { xs: "flex-start", sm: "center" },
+          justifyContent: "center",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <Typography
+          component="p"
+          sx={{ color: "var(--text-muted)", fontFamily: "var(--font-ui)" }}
+        >
+          Need full-stack or AWS support?
+        </Typography>
+        <Button
+          variant="outlined"
+          component={Link}
+          to="/contact"
+          sx={{
+            color: "var(--text)",
+            borderColor: "var(--border)",
+            fontFamily: "var(--font-ui)",
+            "&:hover": { borderColor: "var(--accent)", color: "var(--accent)" },
+          }}
+        >
+          Start a Project
+        </Button>
+      </Box>
       <BottomNavigation
         showLabels
         value={value}

@@ -11,7 +11,10 @@ beforeAll(() => {
 test("renders the home page", () => {
   render(
     <HelmetProvider>
-      <MemoryRouter initialEntries={["/"]}>
+      <MemoryRouter
+        initialEntries={["/"]}
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <ThemeProvider>
           <App />
         </ThemeProvider>

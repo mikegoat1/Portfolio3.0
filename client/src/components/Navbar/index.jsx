@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Box, Tabs, Tab, Typography, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import {
+    AppBar,
+    Box,
+    Tabs,
+    Tab,
+    Typography,
+    IconButton,
+    Drawer,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemText,
+} from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import { AiOutlineDownload } from 'react-icons/ai';
 import MenuIcon from '@mui/icons-material/Menu';
 import ThemeToggle from '../ThemeToggle';
 import Resume from "../../assets/10-31-24 Resume Coding .pdf";
+import { RESUME_FILENAME } from "../../config/site";
 
 const styles = {
     navBar: {
@@ -37,7 +50,7 @@ const tabSx = {
 const handleDownload = () => {
     const link = document.createElement('a');
     link.href = Resume;
-    link.download = '10-31-24 Resume Coding .pdf';
+    link.download = RESUME_FILENAME;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -124,17 +137,25 @@ const NavBar = () => {
                 PaperProps={{ sx: { backgroundColor: 'var(--surface)', color: 'var(--text)' } }}
             >
                 <List>
-                    <ListItem button component={Link} to="/about" onClick={handleDrawerToggle}>
-                        <ListItemText primary="About" sx={{ color: 'var(--text)' }} />
+                    <ListItem disablePadding>
+                        <ListItemButton component={Link} to="/about" onClick={handleDrawerToggle}>
+                            <ListItemText primary="About" sx={{ color: 'var(--text)' }} />
+                        </ListItemButton>
                     </ListItem>
-                    <ListItem button component={Link} to="/work" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Work" sx={{ color: 'var(--text)' }} />
+                    <ListItem disablePadding>
+                        <ListItemButton component={Link} to="/work" onClick={handleDrawerToggle}>
+                            <ListItemText primary="Work" sx={{ color: 'var(--text)' }} />
+                        </ListItemButton>
                     </ListItem>
-                    <ListItem button component={Link} to="/contact" onClick={handleDrawerToggle}>
-                        <ListItemText primary="Contact" sx={{ color: 'var(--text)' }} />
+                    <ListItem disablePadding>
+                        <ListItemButton component={Link} to="/contact" onClick={handleDrawerToggle}>
+                            <ListItemText primary="Contact" sx={{ color: 'var(--text)' }} />
+                        </ListItemButton>
                     </ListItem>
-                    <ListItem button onClick={handleDownload}>
-                        <ListItemText primary="View Resume" sx={{ color: 'var(--text)' }} />
+                    <ListItem disablePadding>
+                        <ListItemButton onClick={handleDownload}>
+                            <ListItemText primary="View Resume" sx={{ color: 'var(--text)' }} />
+                        </ListItemButton>
                     </ListItem>
                 </List>
             </Drawer>

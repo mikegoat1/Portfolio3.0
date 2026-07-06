@@ -10,7 +10,7 @@ export const GITHUB_USERNAME = "mikegoat1";
 export const GITHUB_PROFILE_URL = `https://github.com/${GITHUB_USERNAME}`;
 
 // Resume asset filename (lives in src/assets/).
-export const RESUME_FILENAME = "10-31-24 Resume Coding .pdf";
+export const RESUME_FILENAME = "Michael-Johnson-Resume.pdf";
 
 // === Contact form (Formspree) ===
 export const FORMSPREE_ID = "mojzqaoz";

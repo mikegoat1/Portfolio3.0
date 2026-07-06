@@ -12,7 +12,10 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <BrowserRouter basename='/Portfolio3.0'>
+      <BrowserRouter
+        basename="/Portfolio3.0"
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <ThemeProvider>
           <App />
         </ThemeProvider>

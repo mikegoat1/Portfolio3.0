@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Typography, Avatar, Box, Button, Chip, Stack } from "@mui/material";
+import { Container, Typography, Box, Button, Chip, Stack } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Link } from "react-router-dom";
+import profilePhoto from "../../assets/IMG_1411 2.jpg";
 import PageBackground from "../../components/PageBackground";
 import Seo from "../../components/Seo";
 
@@ -73,24 +74,30 @@ const Home = () => {
         path="/about"
       />
 
-      <Grid container spacing={6} alignItems="center">
+      <Grid container spacing={6} alignItems="flex-start">
         {/* Left Side: Image (asymmetric 4/8 split kept per audit) */}
-        <Grid size={{ md: 4, sm: 5, xs: 12 }} item>
-          <Avatar
-            src={require("../../assets/IMG_1411 2.jpg")}
+        <Grid size={{ md: 4, sm: 5, xs: 12 }}>
+          <Box
+            component="img"
+            src={profilePhoto}
             alt="Michael Johnson"
-            variant="rounded"
+            decoding="async"
             sx={{
+              display: "block",
               width: "100%",
+              maxWidth: { xs: 280, sm: "none" },
               height: "auto",
+              aspectRatio: "3 / 4",
+              objectFit: "cover",
               borderRadius: "var(--radius-md)",
               border: "1px solid var(--border)",
+              mx: { xs: "auto", sm: 0 },
             }}
           />
         </Grid>
 
         {/* Right Side: About Me Text */}
-        <Grid item sx={{ color: "var(--text-muted)" }} size={{ md: 8, sm: 7, xs: 12 }}>
+        <Grid sx={{ color: "var(--text-muted)" }} size={{ md: 8, sm: 7, xs: 12 }}>
           <SectionLabel>{"// about"}</SectionLabel>
           <Typography
             sx={{ color: "var(--text)", fontFamily: "var(--font-ui)" }}

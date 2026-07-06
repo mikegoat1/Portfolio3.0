@@ -1,8 +1,20 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { GITHUB_USERNAME } from "../../config/site";
 
-const ENDPOINT = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`;
-const CACHE_KEY = "gh_repos";
+const ENDPOINT = `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=30`;
+const CACHE_KEY = "gh_repos_v3";
+const EXCLUDED_REPO_NAMES = new Set([
+  "FliccPicker",
+  "Ticket-Scalper",
+  "Little-Lemon",
+  "The-Great-Quiz",
+  "KsenseAssignment",
+  "audioFreq",
+  "first-contributions",
+]);
+
+const shouldShowRepo = (repo) =>
+  !repo.fork && !repo.archived && !EXCLUDED_REPO_NAMES.has(repo.name);
 
 // Trim the GitHub payload to only what the cards render — keeps sessionStorage small.
 const slimRepo = (r) => ({
@@ -32,8 +44,9 @@ const writeCache = (repos) => {
 };
 
 /**
- * Fetches recent public repos for GITHUB_USERNAME from the unauthenticated
- * GitHub REST API. Caches in sessionStorage to respect the 60 req/hr limit.
+ * Fetches recent public, user-owned repos for GITHUB_USERNAME from the
+ * unauthenticated GitHub REST API. Private repos, org/client repos, and private
+ * contribution history are not returned by this public endpoint.
  *
  * Returns:
  *   status: "loading" | "success" | "empty" | "rate-limit" | "error"
@@ -93,7 +106,9 @@ export default function useGitHubRepos() {
       if (!res.ok) throw new Error(`GitHub responded ${res.status}`);
 
       const data = await res.json();
-      const repos = Array.isArray(data) ? data.map(slimRepo) : [];
+      const repos = Array.isArray(data)
+        ? data.filter(shouldShowRepo).map(slimRepo).slice(0, 6)
+        : [];
       if (!mountedRef.current) return;
 
       if (repos.length === 0) {

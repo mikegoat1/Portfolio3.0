@@ -104,13 +104,13 @@ const SectionHeader = () => (
         mb: 1,
       }}
     >
-      {"// open source"}
+      {"// public repos"}
     </Box>
     <Typography
       variant="h4"
       sx={{ fontFamily: "var(--font-ui)", color: "var(--text)" }}
     >
-      GitHub Activity
+      Public GitHub Repos
     </Typography>
     <Box
       component="span"
@@ -120,7 +120,7 @@ const SectionHeader = () => (
         color: "var(--text-muted)",
       }}
     >
-      github.com/{GITHUB_USERNAME}
+      github.com/{GITHUB_USERNAME} · public owner repos only
     </Box>
   </Box>
 );
@@ -160,7 +160,7 @@ const GitHubActivity = () => {
       {status === "loading" && (
         <Grid2 container spacing={2} justifyContent="center" alignItems="stretch">
           {Array.from({ length: 6 }).map((_, i) => (
-            <Grid2 item size={GRID_SIZE} key={i}>
+            <Grid2 size={GRID_SIZE} key={i}>
               <SkeletonCard />
             </Grid2>
           ))}
@@ -171,7 +171,7 @@ const GitHubActivity = () => {
         <>
           <Grid2 container spacing={2} justifyContent="center" alignItems="stretch">
             {repos.map((repo) => (
-              <Grid2 item size={GRID_SIZE} key={repo.id}>
+              <Grid2 size={GRID_SIZE} key={repo.id}>
                 <RepoCard repo={repo} />
               </Grid2>
             ))}
@@ -189,6 +189,17 @@ const GitHubActivity = () => {
               Showing cached data.
             </Box>
           )}
+          <Box
+            sx={{
+              mt: "var(--space-3)",
+              textAlign: "center",
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.78rem",
+              color: "var(--text-muted)",
+            }}
+          >
+            Private, client, and org contributions are represented in selected work when shareable.
+          </Box>
         </>
       )}
 
