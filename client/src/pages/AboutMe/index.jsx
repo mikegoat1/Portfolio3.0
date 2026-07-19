@@ -33,6 +33,8 @@ const skills = [
   "Stripe",
   "JavaScript",
   "UI/UX",
+  "WordPress",
+  "PHP",
 ];
 
 const services = [
@@ -307,7 +309,9 @@ const Home = () => {
               I’m fluent across frontend, backend, cloud infrastructure, and
               async workflows, with hands-on experience in React, Node.js,
               GraphQL, MongoDB/DocumentDB, Redis, SQS, ECS, Lambda, S3, and
-              CloudFront.
+              CloudFront. I also build custom WordPress block themes for small
+              businesses — native Site Editor, no page builders, design tokens
+              via theme.json.
             </Typography>
           </Box>
 
