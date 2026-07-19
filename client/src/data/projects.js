@@ -2,6 +2,7 @@ import GatherHub from "../assets/Updated_GatherHub_Logo_Together_Here.png";
 import ServerlessTaskTracker from "../assets/serverless-task-tracker.png";
 import QubeePlatform from "../assets/qubee-platform.svg";
 import EcomPlatform from "../assets/ecom-platform.svg";
+import EvergreenPlaceholder from "../assets/evergreen-placeholder.svg";
 
 export const projects = [
   {
@@ -98,5 +99,14 @@ export const projects = [
       "Python",
       "JavaScript",
     ],
+  },
+  {
+    title: "Evergreen Grounds",
+    summary: "Custom WordPress block theme for a local landscaping business — native Site Editor, design tokens via theme.json, and custom post types for services, projects, and testimonials.",
+    description:
+      "Custom WordPress block theme for a local landscaping business. Built with the native Site Editor (no page builder), a design-token system in theme.json, and four custom post types — service, project, testimonial, FAQ — with WP-CLI seed scripts for reproducible demo content.",
+    image: EvergreenPlaceholder,
+    gitHub: "https://github.com/mikegoat1/evergreen-grounds-theme",
+    tags: ["WordPress", "PHP", "Gutenberg", "theme.json", "WP-CLI", "Block Theme"],
   },
 ];
